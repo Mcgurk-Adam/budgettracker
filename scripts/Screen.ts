@@ -6,7 +6,7 @@ class AppScreen {
 	constructor(pageId:string) {
 
 		this.screenId = pageId;
-		this.screenElement = document.getElementById("pageId");
+		this.screenElement = document.getElementById(pageId);
 
 		if (this.screenElement == null) {
 			throw "Sorry, there is not an element on this page with that ID, therefore, the screen doesn't exist";
@@ -28,7 +28,7 @@ class AppScreen {
 		const closeButtons:NodeListOf<HTMLElement> = this.screenElement.querySelectorAll("[data-close]");
 		closeButtons.forEach((button:HTMLElement) => {
 
-			button.addEventListener("click", this.closeScreen, false);
+			button.addEventListener("click", () => this.closeScreen(), false);
 
 		});
 
@@ -39,7 +39,7 @@ class AppScreen {
 		const openButtons:NodeListOf<HTMLElement> = document.querySelectorAll(`[data-opens-screen="${this.screenId}"]`);
 		openButtons.forEach((button:HTMLElement) => {
 
-			button.addEventListener("click", this.openScreen, false);
+			button.addEventListener("click", () => this.openScreen(), false);
 
 		});
 
