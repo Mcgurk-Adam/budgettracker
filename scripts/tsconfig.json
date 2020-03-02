@@ -5,6 +5,7 @@
         "outFile": "../js/build.js"
     },
     "files": [
+    	"Database.ts",
     	"Screen.ts",
     	"AddNewEntry.ts",
     	"index.ts"

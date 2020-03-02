@@ -1,3 +1,11 @@
+interface TransactionEntry {
+	transactionId:number;
+	amount:number;
+	date:Date;
+	name:string;
+	type:string;
+}
+
 class AddNewEntry {
 
 	private newEntryInput:HTMLInputElement;

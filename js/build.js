@@ -1,3 +1,102 @@
+var Database = (function () {
+    function Database(onSuccessFunction) {
+        this.idb = indexedDB || window.indexedDB;
+        this.dbName = "money";
+        try {
+            this.dbReq = this.idb.open(this.dbName, 1);
+        }
+        catch (e) {
+            Database.dataNotSupported(e);
+            return;
+        }
+        this.successFunction = onSuccessFunction;
+        this.requestHandlers();
+    }
+    Database.prototype.requestHandlers = function () {
+        var _this = this;
+        this.dbReq.onerror = function (ev) { return Database.dataNotSupported(ev); };
+        this.dbReq.onsuccess = function (ev) {
+            _this.setDb();
+            _this.successFunction(_this.db);
+        };
+        this.dbReq.onupgradeneeded = function (ev) { return _this.seedDb(); };
+    };
+    Database.prototype.seedDb = function () {
+        this.setDb();
+        try {
+            this.transactionTable();
+        }
+        catch (e) {
+        }
+    };
+    Database.prototype.setDb = function () {
+        this.db = this.db === undefined ? this.dbReq.result : this.db;
+        this.db.onerror = function (ev) { return Database.dataNotSupported(ev); };
+    };
+    Database.prototype.transactionTable = function () {
+        var projectTable = this.db.createObjectStore("transactions", {
+            keyPath: "transactionId",
+            autoIncrement: true
+        });
+        projectTable.createIndex("name", "name");
+        projectTable.createIndex("type", "type");
+    };
+    Database.insert = function (db, tableName, keyIndex, objectToAdd, successCallback) {
+        var idbTransaction = db.transaction([tableName], "readwrite");
+        var objectStore = idbTransaction.objectStore(tableName);
+        var objectStoreRequest = objectStore.add(objectToAdd);
+        objectStoreRequest.onsuccess = function (ev) {
+            successCallback(objectStoreRequest);
+        };
+    };
+    Database.fetchAllRowsFromTable = function (db, tableName, rowFetchedCallback, rowNotFetchedCallback) {
+        if (rowNotFetchedCallback === void 0) { rowNotFetchedCallback = function () { return console.log("Error"); }; }
+        var idbTransaction = db.transaction([tableName]);
+        var objectStore = idbTransaction.objectStore(tableName);
+        var idbRequest = objectStore.getAll();
+        idbRequest.onerror = function (ev) {
+            console.log("errored out");
+        };
+        idbRequest.onsuccess = function (ev) {
+            rowFetchedCallback(idbRequest);
+        };
+    };
+    Database.fetchRowFromDatabase = function (db, tableName, keyIndex, rowFetchedCallback, rowNotFetchedCallback) {
+        var idbTransaction = db.transaction([tableName], "readwrite");
+        var objectStore = idbTransaction.objectStore(tableName);
+        var idbRequest = objectStore.get(keyIndex);
+        idbRequest.onerror = function (ev) {
+            console.log("this is an error");
+            console.log(ev);
+        };
+        idbRequest.onsuccess = function (ev) {
+            if (idbRequest === undefined) {
+                rowNotFetchedCallback(idbRequest);
+            }
+            else {
+                rowFetchedCallback(idbRequest);
+            }
+        };
+    };
+    Database.deleteFromDatabase = function (db, tableName, keyIndex, rowFetchedCallback) {
+        var idbTransaction = db.transaction([tableName], "readwrite");
+        var objectStore = idbTransaction.objectStore(tableName);
+        var idbRequest = objectStore.delete(keyIndex);
+        idbRequest.onsuccess = function (ev) {
+            rowFetchedCallback(idbRequest);
+        };
+        idbRequest.onerror = function (ev) {
+            console.log(ev);
+        };
+    };
+    Database.dataNotSupported = function (message) {
+        console.log("For some reason, whatever action you just took, wasn\'t supported");
+        if (message !== null && message !== undefined) {
+            console.log(message);
+        }
+    };
+    return Database;
+}());
 var AppScreen = (function () {
     function AppScreen(pageId) {
         this.screenId = pageId;
