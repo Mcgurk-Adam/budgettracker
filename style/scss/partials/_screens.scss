@@ -1,5 +1,7 @@
 .screen {
+
 	display: flex;
+	flex-flow: column nowrap;
 	width: 100vw;
 	position: fixed;
 	transition: transform 100ms;
@@ -26,6 +28,7 @@
 	}
 
 	header {
+
 		background-color: transparent;
 		display: flex;
 		flex-flow: row nowrap;
@@ -55,6 +58,13 @@
 			background-color: transparent;
 		}
 
+	}
+
+	.main {
+		display: flex;
+		flex-flow: column nowrap;
+		width: 100%;
+		padding: 20px;
 	}
 
 }
