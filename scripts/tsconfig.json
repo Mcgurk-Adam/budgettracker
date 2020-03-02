@@ -6,6 +6,7 @@
     },
     "files": [
     	"Screen.ts",
+    	"AddNewEntry.ts",
     	"index.ts"
     ]
 }

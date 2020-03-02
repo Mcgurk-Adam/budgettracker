@@ -12,11 +12,9 @@ class AppScreen {
 			throw "Sorry, there is not an element on this page with that ID, therefore, the screen doesn't exist";
 		}
 
-		this.init();
-
 	}
 
-	private init(): void {
+	init(): void {
 
 		this.attachCloseListeners();
 		this.attachOpenListeners();
@@ -45,11 +43,22 @@ class AppScreen {
 
 	}
 
-	public closeScreen(): void {
+	closeScreen(): void {
 		this.screenElement.setAttribute("aria-hidden", "true");
+		this.screenElement.querySelectorAll("input:not([type=radio]):not([type=checkbox])").forEach((input:HTMLInputElement) => {
+
+			input.value = "";
+			const inputEvent:Event = new Event("input", {
+				bubbles: true,
+				cancelable: true
+			});
+			input.dispatchEvent(inputEvent);
+
+		});
+
 	}
 
-	public openScreen(): void {
+	openScreen(): void {
 		this.screenElement.removeAttribute("aria-hidden");
 	}
 
