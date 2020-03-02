@@ -32,40 +32,6 @@
 		background-color: #ffffff;
 	}
 
-	header {
-
-		background-color: transparent;
-		display: flex;
-		flex-flow: row nowrap;
-		justify-content: space-between;
-		align-items: center;
-		padding: 0 20px;
-		border-bottom: 1px solid $light_gray;
-		height: 50px;
-		width: 100%;
-
-		h1 {
-			color: $dark_blue;
-			font-size: 24px;
-			font-weight: 700;
-
-		}
-
-		button, .clearfix {
-			height: 100%;
-			width: 40px;
-		}
-
-		button[data-close] {
-			background-image: url(/assets/x.svg);
-			background-position: center;
-			background-size: 20px;
-			background-repeat: no-repeat;
-			background-color: transparent;
-		}
-
-	}
-
 	.main {
 		display: flex;
 		flex-flow: column nowrap;
@@ -113,4 +79,53 @@
 		text-align: center;
 	}
 
+}
+
+header {
+
+	background-color: transparent;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+	border-bottom: 1px solid $light_gray;
+	height: 50px;
+	width: 100%;
+
+	h1 {
+		color: $dark_blue;
+		font-size: 24px;
+		font-weight: 700;
+
+	}
+
+	button, .clearfix {
+		height: 100%;
+		width: 40px;
+	}
+
+	button {
+		background-color: transparent;
+	}
+
+	button[data-close] {
+		background-image: url(/assets/x.svg);
+		background-position: center;
+		background-size: 20px;
+		background-repeat: no-repeat;
+	}
+
+}
+
+#mainHeader {
+	position: fixed;
+	top: 0px;
+}
+
+#navSwitcher {
+	background-image: url(/assets/hamburger.svg);
+	background-repeat: no-repeat;
+	background-size: 20px auto;
+	background-position: center;
 }
