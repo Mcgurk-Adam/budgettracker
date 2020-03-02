@@ -104,8 +104,11 @@ var MoneyTotals = (function () {
     MoneyTotals.prototype.calculate = function () {
         var total = 0;
         Database.fetchAllRowsFromTable(this.db, "transactions", function (idbRequest) {
+            var currentDate = new Date();
             idbRequest.result.forEach(function (transaction) {
-                total += transaction.amount;
+                if (currentDate.getFullYear() == transaction.date.getFullYear() && currentDate.getMonth() == transaction.date.getMonth()) {
+                    total += transaction.amount;
+                }
             });
             document.getElementById("mainMoneyShow").innerText = total.toString();
         });

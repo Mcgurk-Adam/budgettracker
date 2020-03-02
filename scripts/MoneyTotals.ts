@@ -12,8 +12,17 @@ class MoneyTotals {
 
 		Database.fetchAllRowsFromTable(this.db, "transactions", (idbRequest:IDBRequest) => {
 
+			const currentDate:Date = new Date();
+
 			idbRequest.result.forEach((transaction:TransactionEntry) => {
-				total += transaction.amount;
+
+				// only tracking the data for the current month
+				if (currentDate.getFullYear() == transaction.date.getFullYear() && currentDate.getMonth() == transaction.date.getMonth()) {
+
+					total += transaction.amount;
+
+				}
+
 			});
 
 			document.getElementById("mainMoneyShow").innerText = total.toString();
