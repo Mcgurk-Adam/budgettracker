@@ -1,0 +1,38 @@
+button {
+	cursor: pointer;
+
+	&.green {
+		background-color: $main_green;
+	}
+
+	&.circle {
+		height: 50px;
+		width: 50px;
+		border-radius: 30px;
+	}
+
+	&.add {
+		background-repeat: no-repeat;
+		background-size: 23px;
+		background-position: center;
+		background-image: url(/assets/add.svg);
+	}
+
+	&.pressed-animation {
+
+		&:active {
+
+			transform: scale(.8);
+			transition: 100ms transform;
+
+		}
+
+	}
+
+}
+
+button#addNewEntry {
+	position: fixed;
+	right: 20px;
+	bottom: 50px;
+}

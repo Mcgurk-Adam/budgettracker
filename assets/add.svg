@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>Path</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Landing" transform="translate(-357.000000, -809.000000)" fill="#FFFFFF" fill-rule="nonzero" stroke="#FFFFFF">
+            <g id="Add-Button" transform="translate(344.000000, 796.000000)">
+                <g id="icon-add" transform="translate(14.000000, 14.000000)">
+                    <path d="M21.0833333,9.58333333 C22.1418791,9.58333333 23,10.4414542 23,11.5 C23,12.5585458 22.1418791,13.4166667 21.0833333,13.4166667 L13.4166667,13.4166667 L13.4166667,21.0833333 C13.4166667,22.1418791 12.5585458,23 11.5,23 C10.4414542,23 9.58333333,22.1418791 9.58333333,21.0833333 L9.58333333,13.4166667 L1.91666667,13.4166667 C0.858120896,13.4166667 0,12.5585458 0,11.5 C0,10.4414542 0.858120896,9.58333333 1.91666667,9.58333333 L9.58333333,9.58333333 L9.58333333,1.91666667 C9.58333333,0.858120896 10.4414542,0 11.5,0 C12.5585458,0 13.4166667,0.858120896 13.4166667,1.91666667 L13.4166667,9.58333333 L21.0833333,9.58333333 Z" id="Path"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
