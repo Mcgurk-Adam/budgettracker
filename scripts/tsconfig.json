@@ -5,6 +5,7 @@
         "outFile": "../js/build.js"
     },
     "files": [
+    	"Screen.ts",
     	"index.ts"
     ]
 }

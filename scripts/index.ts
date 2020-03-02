@@ -1,0 +1,1 @@
+const addScreen:AppScreen = new AppScreen("addNewEntryScreen");

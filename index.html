@@ -4,6 +4,7 @@
 
 	<meta charset="utf-8">
 	<title>Track!</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap" rel="stylesheet">
 	<link href="/style/style.css" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,7 +14,19 @@
 
 	<main>
 		
-		<button type="button" class="add circle green pressed-animation" id="addNewEntry"></button>
+		<button type="button" class="add circle green pressed-animation" id="addNewEntry" data-opens-screen="addNewEntryScreen"></button>
+
+		<section class="screen white from-bottom half" id="addNewEntryScreen" aria-hidden>
+			
+			<header>
+				
+				<button class="pressed-animation" data-close></button>
+				<h1>Add an Entry</h1>
+				<div class="clearfix"></div>
+
+			</header>
+
+		</section>
 
 	</main>
 

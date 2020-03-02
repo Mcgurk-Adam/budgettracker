@@ -1,0 +1,60 @@
+.screen {
+	display: flex;
+	width: 100vw;
+	position: fixed;
+	transition: transform 100ms;
+
+	&.from-bottom {
+		bottom: 0px;
+		left: 0px;
+
+		&.half {
+			border-top-left-radius: 12px;
+			border-top-right-radius: 12px;
+			height: 300px;
+
+			&[aria-hidden] {
+				transform: translateY(300px);
+			}
+
+		}
+
+	}
+
+	&.white {
+		background-color: #ffffff;
+	}
+
+	header {
+		background-color: transparent;
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 20px;
+		border-bottom: 1px solid $light_gray;
+		height: 50px;
+		width: 100%;
+
+		h1 {
+			color: $dark_blue;
+			font-size: 24px;
+			font-weight: 700;
+		}
+
+		button, .clearfix {
+			height: 100%;
+			width: 40px;
+		}
+
+		button[data-close] {
+			background-image: url(/assets/x.svg);
+			background-position: center;
+			background-size: 23px;
+			background-repeat: no-repeat;
+			background-color: transparent;
+		}
+
+	}
+
+}

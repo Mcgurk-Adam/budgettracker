@@ -1,6 +1,7 @@
 $main_background: #F0F4F8;
 $dark_blue: #102A43;
 $main_green: #38BEC9;
+$light_gray: #D9E2EC;
 
 * {
 	box-sizing: border-box;
@@ -10,6 +11,7 @@ $main_green: #38BEC9;
 	border: none;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-webkit-overflow-scrolling: touch;
+	font-family: 'Montserrat', sans-serif;
 	&:focus {
 		outline: none;
 	}
@@ -27,4 +29,9 @@ a {
 img {
 	max-width: 100%;
 	height: auto;
+}
+
+.bg-img {
+	background-repeat: no-repeat;
+	background-position: center;
 }

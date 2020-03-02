@@ -23,7 +23,8 @@ button {
 		&:active {
 
 			transform: scale(.8);
-			transition: 100ms transform;
+			opacity: .8;
+			transition: transform 100ms, opacity 100ms;
 
 		}
 
