@@ -3,7 +3,7 @@
 	display: flex;
 	flex-flow: column nowrap;
 	width: 100vw;
-	position: absolute;
+	position: fixed;
 	transition: transform 100ms;
 
 	&.from-bottom {
