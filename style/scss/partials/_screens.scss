@@ -65,6 +65,12 @@
 		flex-flow: column nowrap;
 		width: 100%;
 		padding: 20px;
+		flex: 1;
+
+		&.seperate {
+			justify-content: space-between;
+		}
+
 	}
 
 }

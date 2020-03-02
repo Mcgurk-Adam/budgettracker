@@ -1,0 +1,22 @@
+.dollar-input {
+	width: 100%;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	color: $dark_blue;
+	font-size: 24px;
+	font-weight: 700;
+
+	input {
+		width: 50%;
+		height: 50px;
+		background-color: $main_background;
+		border-radius: 3px;
+		text-indent: 15px;
+		font-size: 16px;
+		font-weight: 700;
+		color: $dark_blue;
+	}
+
+}
