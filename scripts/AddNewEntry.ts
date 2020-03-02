@@ -10,11 +10,16 @@ class AddNewEntry {
 
 	private newEntryInput:HTMLInputElement;
 	private addEntryButton:HTMLButtonElement;
+	private db:IDBDatabase;
+	private addScreen:AppScreen;
 
-	constructor() {
+	constructor(db:IDBDatabase, addNewEntryScreen:AppScreen) {
 
 		this.newEntryInput = document.getElementById("addNewValue") as HTMLInputElement;
 		this.addEntryButton = document.getElementById("addNewEntryButton") as HTMLButtonElement;
+		this.db = db;
+		this.addScreen = addNewEntryScreen;
+
 	}
 
 	init(): void {
@@ -40,7 +45,13 @@ class AddNewEntry {
 	private addEntry(): void {
 
 		const addedValue:number = parseFloat(this.newEntryInput.value);
-		console.log(addedValue);
+		Database.insert(this.db, "transactions", "transactionId", {
+			amount: addedValue,
+			date: new Date()
+		}, (idbRequest:IDBRequest) => {
+			const createdId:number = idbRequest.result;
+			this.addScreen.closeScreen();
+		})
 
 	}
 

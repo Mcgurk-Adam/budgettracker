@@ -43,6 +43,7 @@
 			color: $dark_blue;
 			font-size: 24px;
 			font-weight: 700;
+
 		}
 
 		button, .clearfix {
@@ -69,6 +70,27 @@
 
 		&.seperate {
 			justify-content: space-between;
+		}
+
+	}
+
+}
+
+.base {
+	width: 100vw;
+	padding-top: 300px;
+
+	h1 {
+		font-size: 60px;
+		color: $dark_blue;
+		font-weight: 700;
+		text-align: center;
+		line-height: 1;
+
+		sup {
+			color: inherit;
+			font-weight: inherit;
+			font-size: 36px;
 		}
 
 	}

@@ -140,9 +140,11 @@ var AppScreen = (function () {
     return AppScreen;
 }());
 var AddNewEntry = (function () {
-    function AddNewEntry() {
+    function AddNewEntry(db, addNewEntryScreen) {
         this.newEntryInput = document.getElementById("addNewValue");
         this.addEntryButton = document.getElementById("addNewEntryButton");
+        this.db = db;
+        this.addScreen = addNewEntryScreen;
     }
     AddNewEntry.prototype.init = function () {
         var _this = this;
@@ -159,13 +161,22 @@ var AddNewEntry = (function () {
         }
     };
     AddNewEntry.prototype.addEntry = function () {
+        var _this = this;
         var addedValue = parseFloat(this.newEntryInput.value);
-        console.log(addedValue);
+        Database.insert(this.db, "transactions", "transactionId", {
+            amount: addedValue,
+            date: new Date()
+        }, function (idbRequest) {
+            var createdId = idbRequest.result;
+            _this.addScreen.closeScreen();
+        });
     };
     return AddNewEntry;
 }());
 document.querySelector("body").addEventListener("touchstart", function () { }, { passive: true });
 var addScreen = new AppScreen("addNewEntryScreen");
 addScreen.init();
-var newEntry = new AddNewEntry();
-newEntry.init();
+var db = new Database(function (db) {
+    var newEntry = new AddNewEntry(db, addScreen);
+    newEntry.init();
+});
