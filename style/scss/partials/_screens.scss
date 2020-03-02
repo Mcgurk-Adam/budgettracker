@@ -54,7 +54,6 @@
 	h1 {
 
 		font-size: 60px;
-		color: $dark_blue;
 		font-weight: 700;
 		text-align: center;
 		line-height: 1;
@@ -65,7 +64,6 @@
 		&::before {
 			content: "$";
 			font-size: 36px;
-			color: inherit;
 			font-weight: inherit;
 			display: inline-block;
 		}
@@ -73,7 +71,6 @@
 	}
 
 	p {
-		color: $dark_blue;
 		font-size: 21px;
 		font-weight: 700;
 		text-align: center;
@@ -94,7 +91,6 @@ header {
 	width: 100%;
 
 	h1 {
-		color: $dark_blue;
 		font-size: 24px;
 		font-weight: 700;
 
