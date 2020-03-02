@@ -4,7 +4,7 @@
 	flex-flow: column nowrap;
 	width: 100vw;
 	position: fixed;
-	transition: transform 100ms;
+	transition: transform $transition_speed;
 
 	&.from-bottom {
 		bottom: 0px;

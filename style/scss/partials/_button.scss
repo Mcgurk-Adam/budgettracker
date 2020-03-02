@@ -24,7 +24,7 @@ button {
 
 			transform: scale(.8);
 			opacity: .8;
-			transition: transform 100ms, opacity 100ms;
+			transition: transform $transition_speed, opacity $transition_speed;
 
 		}
 
@@ -35,7 +35,7 @@ button {
 		height: 50px;
 		color: #fff;
 		font-size: 20px;
-		border-radius: 3px;
+		border-radius: $border_radius;
 		font-weight: 700;
 		text-transform: uppercase;
 
