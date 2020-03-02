@@ -81,18 +81,31 @@
 	padding-top: 300px;
 
 	h1 {
+
 		font-size: 60px;
 		color: $dark_blue;
 		font-weight: 700;
 		text-align: center;
 		line-height: 1;
+		margin-bottom: 20px;
+		display: flex;
+		justify-content: center;
 
-		sup {
+		&::before {
+			content: "$";
+			font-size: 36px;
 			color: inherit;
 			font-weight: inherit;
-			font-size: 36px;
+			display: inline-block;
 		}
 
+	}
+
+	p {
+		color: $dark_blue;
+		font-size: 21px;
+		font-weight: 700;
+		text-align: center;
 	}
 
 }
