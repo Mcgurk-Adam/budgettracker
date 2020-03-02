@@ -97,6 +97,21 @@ var Database = (function () {
     };
     return Database;
 }());
+var MoneyTotals = (function () {
+    function MoneyTotals(db) {
+        this.db = db;
+    }
+    MoneyTotals.prototype.calculate = function () {
+        var total = 0;
+        Database.fetchAllRowsFromTable(this.db, "transactions", function (idbRequest) {
+            idbRequest.result.forEach(function (transaction) {
+                total += transaction.amount;
+            });
+            document.getElementById("mainMoneyShow").innerText = total.toString();
+        });
+    };
+    return MoneyTotals;
+}());
 var AppScreen = (function () {
     function AppScreen(pageId) {
         this.screenId = pageId;
@@ -143,13 +158,14 @@ var AddNewEntry = (function () {
     function AddNewEntry(db, addNewEntryScreen) {
         this.newEntryInput = document.getElementById("addNewValue");
         this.addEntryButton = document.getElementById("addNewEntryButton");
+        this.typeSelection = document.getElementById("entrySelection");
         this.db = db;
         this.addScreen = addNewEntryScreen;
     }
-    AddNewEntry.prototype.init = function () {
+    AddNewEntry.prototype.init = function (totals) {
         var _this = this;
         this.newEntryInput.addEventListener("input", function () { return _this.toggleButtonAbility(); }, false);
-        this.addEntryButton.addEventListener("click", function () { return _this.addEntry(); }, false);
+        this.addEntryButton.addEventListener("click", function () { return _this.addEntry(totals); }, false);
     };
     AddNewEntry.prototype.toggleButtonAbility = function () {
         var currentValue = this.newEntryInput.value;
@@ -160,14 +176,16 @@ var AddNewEntry = (function () {
             this.addEntryButton.removeAttribute("disabled");
         }
     };
-    AddNewEntry.prototype.addEntry = function () {
+    AddNewEntry.prototype.addEntry = function (totalCalc) {
         var _this = this;
         var addedValue = parseFloat(this.newEntryInput.value);
         Database.insert(this.db, "transactions", "transactionId", {
             amount: addedValue,
+            type: this.typeSelection.value,
             date: new Date()
         }, function (idbRequest) {
             var createdId = idbRequest.result;
+            totalCalc.calculate();
             _this.addScreen.closeScreen();
         });
     };
@@ -177,6 +195,8 @@ document.querySelector("body").addEventListener("touchstart", function () { }, {
 var addScreen = new AppScreen("addNewEntryScreen");
 addScreen.init();
 var db = new Database(function (db) {
+    var totals = new MoneyTotals(db);
+    totals.calculate();
     var newEntry = new AddNewEntry(db, addScreen);
-    newEntry.init();
+    newEntry.init(totals);
 });

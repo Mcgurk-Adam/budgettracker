@@ -6,6 +6,7 @@
     },
     "files": [
     	"Database.ts",
+        "MoneyTotals.ts",
     	"Screen.ts",
     	"AddNewEntry.ts",
     	"index.ts"
