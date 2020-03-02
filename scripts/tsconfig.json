@@ -8,7 +8,8 @@
     	"Database.ts",
         "MoneyTotals.ts",
     	"Screen.ts",
-    	"AddNewEntry.ts",
+        "AddNewEntry.ts",
+    	"MobileNav.ts",
     	"index.ts"
     ]
 }

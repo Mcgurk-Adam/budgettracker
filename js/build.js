@@ -194,7 +194,31 @@ var AddNewEntry = (function () {
     };
     return AddNewEntry;
 }());
+var MobileNav = (function () {
+    function MobileNav() {
+        this.hamburgerMenu = document.getElementById("navSwitcher");
+        this.navSlideout = document.getElementById("mainNav");
+    }
+    MobileNav.prototype.addListeners = function () {
+        var _this = this;
+        this.hamburgerMenu.addEventListener("click", function () { return _this.openFlyout(); }, false);
+        this.navSlideout.addEventListener("click", function (ev) {
+            if (ev.target == _this.navSlideout) {
+                _this.closeFlyout();
+            }
+        }, false);
+    };
+    MobileNav.prototype.openFlyout = function () {
+        this.navSlideout.removeAttribute("aria-hidden");
+    };
+    MobileNav.prototype.closeFlyout = function () {
+        this.navSlideout.setAttribute("aria-hidden", "true");
+    };
+    return MobileNav;
+}());
 document.querySelector("body").addEventListener("touchstart", function () { }, { passive: true });
+var nav = new MobileNav();
+nav.addListeners();
 var addScreen = new AppScreen("addNewEntryScreen");
 addScreen.init();
 var db = new Database(function (db) {
