@@ -23,7 +23,7 @@ button {
 		&:active {
 
 			transform: scale(.8);
-			opacity: .8;
+			opacity: .6;
 			transition: transform $transition_speed, opacity $transition_speed;
 
 		}
