@@ -25,7 +25,7 @@ class MoneyTotals {
 
 			});
 
-			document.getElementById("mainMoneyShow").innerText = total.toString();
+			document.getElementById("mainMoneyShow").innerText = total.toFixed(2);
 
 		});
 
