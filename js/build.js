@@ -110,7 +110,7 @@ var MoneyTotals = (function () {
                     total += transaction.amount;
                 }
             });
-            document.getElementById("mainMoneyShow").innerText = total.toString();
+            document.getElementById("mainMoneyShow").innerText = total.toFixed(2);
         });
     };
     return MoneyTotals;
