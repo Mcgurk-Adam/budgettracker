@@ -213,6 +213,7 @@ var AddNewEntry = (function () {
 }());
 var MobileNav = (function () {
     function MobileNav() {
+        this.blackBackground = document.getElementById("opaqueBlackBackground");
         this.hamburgerMenu = document.getElementById("navSwitcher");
         this.navSlideout = document.getElementById("mainNav");
     }
@@ -226,9 +227,15 @@ var MobileNav = (function () {
         }, false);
     };
     MobileNav.prototype.openFlyout = function () {
+        this.blackBackground.style.visibility = "visible";
+        this.blackBackground.classList.add("shown");
+        this.blackBackground.addEventListener("click", this.closeFlyout.bind(this), false);
         this.navSlideout.removeAttribute("aria-hidden");
     };
     MobileNav.prototype.closeFlyout = function () {
+        this.blackBackground.removeEventListener("click", this.closeFlyout);
+        this.blackBackground.classList.remove("shown");
+        this.blackBackground.addEventListener("transitionend", AppScreen.changeBackToHidden, false);
         this.navSlideout.setAttribute("aria-hidden", "true");
     };
     return MobileNav;

@@ -79,7 +79,7 @@ class AppScreen {
 	}
 
 	static changeBackToHidden(): void {
-
+		
 		this.style.visibility = "hidden";
 		this.removeEventListener("transitionend", AppScreen.changeBackToHidden);
 
