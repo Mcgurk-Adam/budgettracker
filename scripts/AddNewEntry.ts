@@ -29,6 +29,7 @@ class AddNewEntry {
 	init(totals:MoneyTotals): void {
 
 		this.newEntryInput.addEventListener("input", () => this.toggleButtonAbility(), false);
+		this.typeSelection.addEventListener("change", () => this.toggleButtonAbility(), false);
 
 		this.addEntryButton.addEventListener("click", () => this.addEntry(totals), false);
 

@@ -169,6 +169,7 @@ var AddNewEntry = (function () {
     AddNewEntry.prototype.init = function (totals) {
         var _this = this;
         this.newEntryInput.addEventListener("input", function () { return _this.toggleButtonAbility(); }, false);
+        this.typeSelection.addEventListener("change", function () { return _this.toggleButtonAbility(); }, false);
         this.addEntryButton.addEventListener("click", function () { return _this.addEntry(totals); }, false);
     };
     AddNewEntry.prototype.toggleButtonAbility = function () {
