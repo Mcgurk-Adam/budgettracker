@@ -48,11 +48,7 @@ class AppScreen {
 	closeScreen(): void {
 		this.screenElement.setAttribute("aria-hidden", "true");
 		this.blackBackground.classList.remove("shown");
-		this.blackBackground.addEventListener("transitionend", () => {
-
-			this.blackBackground.style.visibility = "hidden";
-
-		}, false);
+		this.blackBackground.addEventListener("transitionend", AppScreen.changeBackToHidden, false);
 		this.blackBackground.removeEventListener("click", this.clickedOnBackground);
 		this.screenElement.querySelectorAll("input:not([type=radio]):not([type=checkbox])").forEach((input:HTMLInputElement) => {
 
@@ -79,6 +75,13 @@ class AppScreen {
 		if (ev.target == this.blackBackground) {
 			this.closeScreen();
 		}
+
+	}
+
+	static changeBackToHidden(): void {
+
+		this.style.visibility = "hidden";
+		this.removeEventListener("transitionend", AppScreen.changeBackToHidden);
 
 	}
 

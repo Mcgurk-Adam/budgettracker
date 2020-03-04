@@ -143,12 +143,9 @@ var AppScreen = (function () {
         });
     };
     AppScreen.prototype.closeScreen = function () {
-        var _this = this;
         this.screenElement.setAttribute("aria-hidden", "true");
         this.blackBackground.classList.remove("shown");
-        this.blackBackground.addEventListener("transitionend", function () {
-            _this.blackBackground.style.visibility = "hidden";
-        }, false);
+        this.blackBackground.addEventListener("transitionend", AppScreen.changeBackToHidden, false);
         this.blackBackground.removeEventListener("click", this.clickedOnBackground);
         this.screenElement.querySelectorAll("input:not([type=radio]):not([type=checkbox])").forEach(function (input) {
             input.value = "";
@@ -169,6 +166,10 @@ var AppScreen = (function () {
         if (ev.target == this.blackBackground) {
             this.closeScreen();
         }
+    };
+    AppScreen.changeBackToHidden = function () {
+        this.style.visibility = "hidden";
+        this.removeEventListener("transitionend", AppScreen.changeBackToHidden);
     };
     return AppScreen;
 }());
