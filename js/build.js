@@ -149,6 +149,7 @@ var AppScreen = (function () {
         this.blackBackground.addEventListener("transitionend", function () {
             _this.blackBackground.style.visibility = "hidden";
         }, false);
+        this.blackBackground.removeEventListener("click", this.clickedOnBackground);
         this.screenElement.querySelectorAll("input:not([type=radio]):not([type=checkbox])").forEach(function (input) {
             input.value = "";
             var inputEvent = new Event("input", {
@@ -162,6 +163,12 @@ var AppScreen = (function () {
         this.blackBackground.style.visibility = "visible";
         this.blackBackground.classList.add("shown");
         this.screenElement.removeAttribute("aria-hidden");
+        this.blackBackground.addEventListener("click", this.clickedOnBackground.bind(this), false);
+    };
+    AppScreen.prototype.clickedOnBackground = function (ev) {
+        if (ev.target == this.blackBackground) {
+            this.closeScreen();
+        }
     };
     return AppScreen;
 }());

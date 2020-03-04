@@ -53,6 +53,7 @@ class AppScreen {
 			this.blackBackground.style.visibility = "hidden";
 
 		}, false);
+		this.blackBackground.removeEventListener("click", this.clickedOnBackground);
 		this.screenElement.querySelectorAll("input:not([type=radio]):not([type=checkbox])").forEach((input:HTMLInputElement) => {
 
 			input.value = "";
@@ -70,6 +71,15 @@ class AppScreen {
 		this.blackBackground.style.visibility = "visible";
 		this.blackBackground.classList.add("shown");
 		this.screenElement.removeAttribute("aria-hidden");
+		this.blackBackground.addEventListener("click", this.clickedOnBackground.bind(this), false);
+	}
+
+	clickedOnBackground(ev:MouseEvent): void {
+
+		if (ev.target == this.blackBackground) {
+			this.closeScreen();
+		}
+
 	}
 
 }
