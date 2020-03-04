@@ -15,6 +15,7 @@ $transition_speed: 150ms;
 	-webkit-overflow-scrolling: touch;
 	font-family: 'Montserrat', sans-serif;
 	color: $dark_blue;
+	-webkit-touch-callout: none;
 	&:focus {
 		outline: none;
 	}
