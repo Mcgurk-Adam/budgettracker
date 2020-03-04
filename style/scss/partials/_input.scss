@@ -31,4 +31,6 @@
 select {
 	color: #fff;
 	background-color: $main_background;
+	appearance: textfield;
+	-webkit-appearance: textfield;
 }
