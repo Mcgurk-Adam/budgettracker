@@ -9,7 +9,7 @@
 	&.from-bottom {
 		bottom: 0px;
 		left: 0px;
-		z-index: 5;
+		z-index: 35;
 
 		&.half {
 			border-top-left-radius: 20px;
@@ -124,4 +124,23 @@ header {
 	background-repeat: no-repeat;
 	background-size: 20px auto;
 	background-position: center;
+}
+
+#opaqueBlackBackground {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100vw;
+	height: 100vw;
+	transition: opacity $transition_speed;
+	opacity: 0;
+	display: block;
+	background-color: rgba(0,0,0,.3);
+	z-index: 20;
+	visibility: hidden;
+
+	&.shown {
+		opacity: 1;
+	}
+
 }

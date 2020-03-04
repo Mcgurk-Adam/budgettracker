@@ -117,6 +117,7 @@ var MoneyTotals = (function () {
 }());
 var AppScreen = (function () {
     function AppScreen(pageId) {
+        this.blackBackground = document.getElementById("opaqueBlackBackground");
         this.screenId = pageId;
         this.screenElement = document.getElementById(pageId);
         if (this.screenElement == null) {
@@ -142,7 +143,12 @@ var AppScreen = (function () {
         });
     };
     AppScreen.prototype.closeScreen = function () {
+        var _this = this;
         this.screenElement.setAttribute("aria-hidden", "true");
+        this.blackBackground.classList.remove("shown");
+        this.blackBackground.addEventListener("transitionend", function () {
+            _this.blackBackground.style.visibility = "hidden";
+        }, false);
         this.screenElement.querySelectorAll("input:not([type=radio]):not([type=checkbox])").forEach(function (input) {
             input.value = "";
             var inputEvent = new Event("input", {
@@ -153,6 +159,8 @@ var AppScreen = (function () {
         });
     };
     AppScreen.prototype.openScreen = function () {
+        this.blackBackground.style.visibility = "visible";
+        this.blackBackground.classList.add("shown");
         this.screenElement.removeAttribute("aria-hidden");
     };
     return AppScreen;

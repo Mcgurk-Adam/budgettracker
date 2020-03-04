@@ -2,9 +2,11 @@ class AppScreen {
 
 	screenId:string;
 	screenElement:HTMLElement;
+	blackBackground:HTMLDivElement;
 
 	constructor(pageId:string) {
 
+		this.blackBackground = document.getElementById("opaqueBlackBackground") as HTMLDivElement;
 		this.screenId = pageId;
 		this.screenElement = document.getElementById(pageId);
 
@@ -45,6 +47,12 @@ class AppScreen {
 
 	closeScreen(): void {
 		this.screenElement.setAttribute("aria-hidden", "true");
+		this.blackBackground.classList.remove("shown");
+		this.blackBackground.addEventListener("transitionend", () => {
+
+			this.blackBackground.style.visibility = "hidden";
+
+		}, false);
 		this.screenElement.querySelectorAll("input:not([type=radio]):not([type=checkbox])").forEach((input:HTMLInputElement) => {
 
 			input.value = "";
@@ -59,6 +67,8 @@ class AppScreen {
 	}
 
 	openScreen(): void {
+		this.blackBackground.style.visibility = "visible";
+		this.blackBackground.classList.add("shown");
 		this.screenElement.removeAttribute("aria-hidden");
 	}
 
