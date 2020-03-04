@@ -147,7 +147,7 @@ var AppScreen = (function () {
         this.blackBackground.classList.remove("shown");
         this.blackBackground.addEventListener("transitionend", AppScreen.changeBackToHidden, false);
         this.blackBackground.removeEventListener("click", this.clickedOnBackground);
-        this.screenElement.querySelectorAll("input:not([type=radio]):not([type=checkbox])").forEach(function (input) {
+        this.screenElement.querySelectorAll("input:not([type=radio]):not([type=checkbox]), select").forEach(function (input) {
             input.value = "";
             var inputEvent = new Event("input", {
                 bubbles: true,

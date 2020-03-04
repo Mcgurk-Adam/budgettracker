@@ -50,7 +50,7 @@ class AppScreen {
 		this.blackBackground.classList.remove("shown");
 		this.blackBackground.addEventListener("transitionend", AppScreen.changeBackToHidden, false);
 		this.blackBackground.removeEventListener("click", this.clickedOnBackground);
-		this.screenElement.querySelectorAll("input:not([type=radio]):not([type=checkbox])").forEach((input:HTMLInputElement) => {
+		this.screenElement.querySelectorAll("input:not([type=radio]):not([type=checkbox]), select").forEach((input:HTMLInputElement) => {
 
 			input.value = "";
 			const inputEvent:Event = new Event("input", {
@@ -79,7 +79,7 @@ class AppScreen {
 	}
 
 	static changeBackToHidden(): void {
-		
+
 		this.style.visibility = "hidden";
 		this.removeEventListener("transitionend", AppScreen.changeBackToHidden);
 
