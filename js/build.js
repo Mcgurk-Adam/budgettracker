@@ -162,6 +162,7 @@ var AddNewEntry = (function () {
         this.newEntryInput = document.getElementById("addNewValue");
         this.addEntryButton = document.getElementById("addNewEntryButton");
         this.typeSelection = document.getElementById("entrySelection");
+        this.form = document.getElementById("addEntryForm");
         this.db = db;
         this.addScreen = addNewEntryScreen;
     }
@@ -171,12 +172,11 @@ var AddNewEntry = (function () {
         this.addEntryButton.addEventListener("click", function () { return _this.addEntry(totals); }, false);
     };
     AddNewEntry.prototype.toggleButtonAbility = function () {
-        var currentValue = this.newEntryInput.value;
-        if (currentValue == "") {
-            this.addEntryButton.setAttribute("disabled", "true");
+        if (this.form.checkValidity()) {
+            this.addEntryButton.removeAttribute("disabled");
         }
         else {
-            this.addEntryButton.removeAttribute("disabled");
+            this.addEntryButton.setAttribute("disabled", "true");
         }
     };
     AddNewEntry.prototype.addEntry = function (totalCalc) {

@@ -11,6 +11,7 @@ class AddNewEntry {
 	private newEntryInput:HTMLInputElement;
 	private addEntryButton:HTMLButtonElement;
 	private typeSelection:HTMLSelectElement;
+	private form:HTMLFormElement;
 	private db:IDBDatabase;
 	private addScreen:AppScreen;
 
@@ -19,6 +20,7 @@ class AddNewEntry {
 		this.newEntryInput = document.getElementById("addNewValue") as HTMLInputElement;
 		this.addEntryButton = document.getElementById("addNewEntryButton") as HTMLButtonElement;
 		this.typeSelection = document.getElementById("entrySelection") as HTMLSelectElement;
+		this.form = document.getElementById("addEntryForm") as HTMLFormElement;
 		this.db = db;
 		this.addScreen = addNewEntryScreen;
 
@@ -34,12 +36,10 @@ class AddNewEntry {
 
 	private toggleButtonAbility(): void {
 
-		const currentValue:string = this.newEntryInput.value;
-
-		if (currentValue == "") {
-			this.addEntryButton.setAttribute("disabled", "true");
-		} else {
+		if (this.form.checkValidity()) {
 			this.addEntryButton.removeAttribute("disabled");
+		} else {
+			this.addEntryButton.setAttribute("disabled", "true");
 		}
 
 	}
