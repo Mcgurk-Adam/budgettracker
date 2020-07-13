@@ -57,6 +57,8 @@ class AppScreen {
 		this.blackBackground.removeEventListener("touchstart", this.clickedOnBackground);
 		this.screenElement.querySelectorAll("input:not([type=radio]):not([type=checkbox]), select").forEach((input:HTMLInputElement|HTMLSelectElement) => {
 
+			input.blur();
+
 			input.value = "";
 			const inputEvent:Event = new Event("input", {
 				bubbles: true,
