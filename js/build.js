@@ -222,8 +222,8 @@ var MobileNav = (function () {
     }
     MobileNav.prototype.addListeners = function () {
         var _this = this;
-        this.hamburgerMenu.addEventListener("click", function () { return _this.openFlyout(); }, false);
-        this.navSlideout.addEventListener("click", function (ev) {
+        this.hamburgerMenu.addEventListener("touchstart", function () { return _this.openFlyout(); }, false);
+        this.navSlideout.addEventListener("touchstart", function (ev) {
             if (ev.target == _this.navSlideout) {
                 _this.closeFlyout();
             }
@@ -232,11 +232,11 @@ var MobileNav = (function () {
     MobileNav.prototype.openFlyout = function () {
         this.blackBackground.style.visibility = "visible";
         this.blackBackground.classList.add("shown");
-        this.blackBackground.addEventListener("click", this.closeFlyout.bind(this), false);
+        this.blackBackground.addEventListener("touchstart", this.closeFlyout.bind(this), false);
         this.navSlideout.removeAttribute("aria-hidden");
     };
     MobileNav.prototype.closeFlyout = function () {
-        this.blackBackground.removeEventListener("click", this.closeFlyout);
+        this.blackBackground.removeEventListener("touchstart", this.closeFlyout);
         this.blackBackground.classList.remove("shown");
         this.blackBackground.addEventListener("transitionend", AppScreen.changeBackToHidden, false);
         this.navSlideout.setAttribute("aria-hidden", "true");

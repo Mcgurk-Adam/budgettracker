@@ -14,8 +14,8 @@ class MobileNav {
 
 	addListeners(): void {
 
-		this.hamburgerMenu.addEventListener("click", () => this.openFlyout(), false);
-		this.navSlideout.addEventListener("click", (ev:MouseEvent) => {
+		this.hamburgerMenu.addEventListener("touchstart", () => this.openFlyout(), false);
+		this.navSlideout.addEventListener("touchstart", (ev:MouseEvent) => {
 
 			if (ev.target == this.navSlideout) {
 
@@ -31,14 +31,14 @@ class MobileNav {
 
 		this.blackBackground.style.visibility = "visible";
 		this.blackBackground.classList.add("shown");
-		this.blackBackground.addEventListener("click", this.closeFlyout.bind(this), false);
+		this.blackBackground.addEventListener("touchstart", this.closeFlyout.bind(this), false);
 		this.navSlideout.removeAttribute("aria-hidden");
 
 	}
 
 	closeFlyout(): void {
 
-		this.blackBackground.removeEventListener("click", this.closeFlyout);
+		this.blackBackground.removeEventListener("touchstart", this.closeFlyout);
 		this.blackBackground.classList.remove("shown");
 		this.blackBackground.addEventListener("transitionend", AppScreen.changeBackToHidden, false);
 		this.navSlideout.setAttribute("aria-hidden", "true");
