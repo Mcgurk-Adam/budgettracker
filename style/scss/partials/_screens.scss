@@ -14,10 +14,10 @@
 		&.half {
 			border-top-left-radius: 20px;
 			border-top-right-radius: 20px;
-			height: 300px;
+			height: 320px;
 
 			&[aria-hidden] {
-				transform: translateY(300px);
+				transform: translateY(320px);
 			}
 
 		}
@@ -41,6 +41,16 @@
 
 		&.seperate {
 			justify-content: space-between;
+		}
+
+	}
+
+	&.no-animation {
+
+		&[aria-hidden] {
+			
+			display: none;
+
 		}
 
 	}

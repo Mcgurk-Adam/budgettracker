@@ -2,13 +2,14 @@ interface TransactionEntry {
 	transactionId:number;
 	amount:number;
 	date:Date;
-	name:string;
 	type:string;
+	name:string;
 }
 
 class AddNewEntry {
 
 	private newEntryInput:HTMLInputElement;
+	private nameEntryInput:HTMLInputElement;
 	private addEntryButton:HTMLButtonElement;
 	private typeSelection:HTMLSelectElement;
 	private form:HTMLFormElement;
@@ -18,6 +19,7 @@ class AddNewEntry {
 	constructor(db:IDBDatabase, addNewEntryScreen:AppScreen) {
 
 		this.newEntryInput = document.getElementById("addNewValue") as HTMLInputElement;
+		this.nameEntryInput = document.getElementById("nameOfPurchase") as HTMLInputElement;
 		this.addEntryButton = document.getElementById("addNewEntryButton") as HTMLButtonElement;
 		this.typeSelection = document.getElementById("entrySelection") as HTMLSelectElement;
 		this.form = document.getElementById("addEntryForm") as HTMLFormElement;
@@ -29,6 +31,7 @@ class AddNewEntry {
 	init(totals:MoneyTotals): void {
 
 		this.newEntryInput.addEventListener("input", () => this.toggleButtonAbility(), false);
+		this.nameEntryInput.addEventListener("input", () => this.toggleButtonAbility(), false);
 		this.typeSelection.addEventListener("change", () => this.toggleButtonAbility(), false);
 
 		this.addEntryButton.addEventListener("click", () => this.addEntry(totals), false);
@@ -51,6 +54,7 @@ class AddNewEntry {
 		Database.insert(this.db, "transactions", "transactionId", {
 			amount: addedValue,
 			type: this.typeSelection.value,
+			name: this.nameEntryInput.value,
 			date: new Date()
 		}, (idbRequest:IDBRequest) => {
 			const createdId:number = idbRequest.result;

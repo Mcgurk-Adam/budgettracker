@@ -26,7 +26,7 @@
 			<div class="clearfix"></div>
 		</header>
 
-		<section class="screen full">
+		<section class="screen full no-animation" id="dashScreen">
 
 			<div class="base">
 				
@@ -62,6 +62,12 @@
 
 				</select>
 
+				<label>
+					
+					<input type="text" id="nameOfPurchase" required>
+
+				</label>
+
 				<label class="dollar-input">
 
 					$ <input type="number" inputmode="decimal" id="addNewValue" step="any" required>
@@ -73,6 +79,8 @@
 			</form>
 
 		</section>
+
+		<section id="historyScreen" class="screen full no-animation" aria-hidden></section>
 
 	</main>
 
