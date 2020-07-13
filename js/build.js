@@ -132,21 +132,21 @@ var AppScreen = (function () {
         var _this = this;
         var closeButtons = this.screenElement.querySelectorAll("[data-close]");
         closeButtons.forEach(function (button) {
-            button.addEventListener("click", function () { return _this.closeScreen(); }, false);
+            button.addEventListener("touchstart", function () { return _this.closeScreen(); }, false);
         });
     };
     AppScreen.prototype.attachOpenListeners = function () {
         var _this = this;
         var openButtons = document.querySelectorAll("[data-opens-screen=\"" + this.screenId + "\"]");
         openButtons.forEach(function (button) {
-            button.addEventListener("click", function () { return _this.openScreen(); }, false);
+            button.addEventListener("touchstart", function () { return _this.openScreen(); }, false);
         });
     };
     AppScreen.prototype.closeScreen = function () {
         this.screenElement.setAttribute("aria-hidden", "true");
         this.blackBackground.classList.remove("shown");
         this.blackBackground.addEventListener("transitionend", AppScreen.changeBackToHidden, false);
-        this.blackBackground.removeEventListener("click", this.clickedOnBackground);
+        this.blackBackground.removeEventListener("touchstart", this.clickedOnBackground);
         this.screenElement.querySelectorAll("input:not([type=radio]):not([type=checkbox]), select").forEach(function (input) {
             input.value = "";
             var inputEvent = new Event("input", {
@@ -160,7 +160,7 @@ var AppScreen = (function () {
         this.blackBackground.style.visibility = "visible";
         this.blackBackground.classList.add("shown");
         this.screenElement.removeAttribute("aria-hidden");
-        this.blackBackground.addEventListener("click", this.clickedOnBackground.bind(this), false);
+        this.blackBackground.addEventListener("touchstart", this.clickedOnBackground.bind(this), false);
     };
     AppScreen.prototype.clickedOnBackground = function (ev) {
         if (ev.target == this.blackBackground) {

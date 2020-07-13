@@ -28,7 +28,7 @@ class AppScreen {
 		const closeButtons:NodeListOf<HTMLElement> = this.screenElement.querySelectorAll("[data-close]");
 		closeButtons.forEach((button:HTMLElement) => {
 
-			button.addEventListener("click", () => this.closeScreen(), false);
+			button.addEventListener("touchstart", () => this.closeScreen(), false);
 
 		});
 
@@ -39,7 +39,7 @@ class AppScreen {
 		const openButtons:NodeListOf<HTMLElement> = document.querySelectorAll(`[data-opens-screen="${this.screenId}"]`);
 		openButtons.forEach((button:HTMLElement) => {
 
-			button.addEventListener("click", () => this.openScreen(), false);
+			button.addEventListener("touchstart", () => this.openScreen(), false);
 
 		});
 
@@ -49,7 +49,7 @@ class AppScreen {
 		this.screenElement.setAttribute("aria-hidden", "true");
 		this.blackBackground.classList.remove("shown");
 		this.blackBackground.addEventListener("transitionend", AppScreen.changeBackToHidden, false);
-		this.blackBackground.removeEventListener("click", this.clickedOnBackground);
+		this.blackBackground.removeEventListener("touchstart", this.clickedOnBackground);
 		this.screenElement.querySelectorAll("input:not([type=radio]):not([type=checkbox]), select").forEach((input:HTMLInputElement|HTMLSelectElement) => {
 
 			input.value = "";
@@ -67,7 +67,7 @@ class AppScreen {
 		this.blackBackground.style.visibility = "visible";
 		this.blackBackground.classList.add("shown");
 		this.screenElement.removeAttribute("aria-hidden");
-		this.blackBackground.addEventListener("click", this.clickedOnBackground.bind(this), false);
+		this.blackBackground.addEventListener("touchstart", this.clickedOnBackground.bind(this), false);
 	}
 
 	clickedOnBackground(ev:MouseEvent): void {
