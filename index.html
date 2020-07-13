@@ -5,7 +5,12 @@
 	<meta charset="utf-8">
 	<title>Track!</title>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700&display=swap" media="print" onload="this.media='all'" />
+	<noscript>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700&display=swap">
+	</noscript>
 	<link href="/style/style.css" rel="stylesheet">
+	<link rel="icon" href="/favicon.ico">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
@@ -17,16 +22,21 @@
 	<main>
 
 		<nav id="mainNav" aria-hidden>
-			<ul></ul>
+
+			<ul>
+				<button type="button" data-opens-screen="dashScreen">Home</button>
+				<button type="button" data-opens-screen="logScreen">Activity</button>
+			</ul>
+
 		</nav>
 
 		<header id="mainHeader">
 			<button id="navSwitcher"></button>
-			<h1>Dashboard</h1>
+			<h1>Home</h1>
 			<div class="clearfix"></div>
 		</header>
 
-		<section class="screen full no-animation" id="dashScreen">
+		<section class="screen full no-animation" id="dashScreen" data-screen-title="Home">
 
 			<div class="base">
 				
@@ -37,6 +47,10 @@
 			
 			<button type="button" class="add circle green pressed-animation" id="addNewEntry" data-opens-screen="addNewEntryScreen"></button>
 
+		</section>
+
+		<section class="screen full no-animation" id="logScreen" data-screen-title="Activity" aria-hidden>
+			
 		</section>
 
 		<section class="screen white from-bottom half" id="addNewEntryScreen" aria-hidden>
@@ -79,8 +93,6 @@
 			</form>
 
 		</section>
-
-		<section id="historyScreen" class="screen full no-animation" aria-hidden></section>
 
 	</main>
 

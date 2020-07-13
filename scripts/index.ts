@@ -12,6 +12,12 @@ nav.addListeners();
 const addScreen:AppScreen = new AppScreen("addNewEntryScreen");
 addScreen.init();
 
+const logScreen:AppScreen = new AppScreen("logScreen");
+logScreen.init();
+
+const homeScreen:AppScreen = new AppScreen("dashScreen");
+homeScreen.init();
+
 const db:Database = new Database((db:IDBDatabase) => {
 
 	const totals:MoneyTotals = new MoneyTotals(db);

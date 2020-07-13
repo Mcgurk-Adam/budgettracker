@@ -123,6 +123,7 @@ var AppScreen = (function () {
         if (this.screenElement == null) {
             throw "Sorry, there is not an element on this page with that ID, therefore, the screen doesn't exist";
         }
+        this.pageTitle = this.screenElement.getAttribute("data-screen-title") == undefined ? null : this.screenElement.getAttribute("data-screen-title");
     }
     AppScreen.prototype.init = function () {
         this.attachCloseListeners();
@@ -144,8 +145,10 @@ var AppScreen = (function () {
     };
     AppScreen.prototype.closeScreen = function () {
         this.screenElement.setAttribute("aria-hidden", "true");
+        if (this.screenElement.classList.contains("half")) {
+            document.getElementById("dashScreen").removeAttribute("aria-hidden");
+        }
         this.blackBackground.classList.remove("shown");
-        this.blackBackground.addEventListener("transitionend", AppScreen.changeBackToHidden, false);
         this.blackBackground.removeEventListener("touchstart", this.clickedOnBackground);
         this.screenElement.querySelectorAll("input:not([type=radio]):not([type=checkbox]), select").forEach(function (input) {
             input.value = "";
@@ -157,8 +160,15 @@ var AppScreen = (function () {
         });
     };
     AppScreen.prototype.openScreen = function () {
-        this.blackBackground.style.visibility = "visible";
-        this.blackBackground.classList.add("shown");
+        if (this.screenElement.classList.contains("half")) {
+            this.blackBackground.classList.add("shown");
+        }
+        else {
+            document.querySelectorAll(".screen").forEach(function (screen) { return screen.setAttribute("aria-hidden", "true"); });
+        }
+        if (this.pageTitle != null) {
+            document.querySelector("#mainHeader h1").innerText = this.pageTitle;
+        }
         this.screenElement.removeAttribute("aria-hidden");
         this.blackBackground.addEventListener("touchstart", this.clickedOnBackground.bind(this), false);
     };
@@ -166,10 +176,6 @@ var AppScreen = (function () {
         if (ev.target == this.blackBackground) {
             this.closeScreen();
         }
-    };
-    AppScreen.changeBackToHidden = function () {
-        this.style.visibility = "hidden";
-        this.removeEventListener("transitionend", AppScreen.changeBackToHidden);
     };
     return AppScreen;
 }());
@@ -228,9 +234,11 @@ var MobileNav = (function () {
                 _this.closeFlyout();
             }
         }, false);
+        document.querySelectorAll("#mainNav [data-opens-screen]").forEach(function (button) {
+            button.addEventListener("touchend", function () { return _this.closeFlyout(); }, false);
+        });
     };
     MobileNav.prototype.openFlyout = function () {
-        this.blackBackground.style.visibility = "visible";
         this.blackBackground.classList.add("shown");
         this.blackBackground.addEventListener("touchstart", this.closeFlyout.bind(this), false);
         this.navSlideout.removeAttribute("aria-hidden");
@@ -238,7 +246,6 @@ var MobileNav = (function () {
     MobileNav.prototype.closeFlyout = function () {
         this.blackBackground.removeEventListener("touchstart", this.closeFlyout);
         this.blackBackground.classList.remove("shown");
-        this.blackBackground.addEventListener("transitionend", AppScreen.changeBackToHidden, false);
         this.navSlideout.setAttribute("aria-hidden", "true");
     };
     return MobileNav;
@@ -248,6 +255,10 @@ var nav = new MobileNav();
 nav.addListeners();
 var addScreen = new AppScreen("addNewEntryScreen");
 addScreen.init();
+var logScreen = new AppScreen("logScreen");
+logScreen.init();
+var homeScreen = new AppScreen("dashScreen");
+homeScreen.init();
 var db = new Database(function (db) {
     var totals = new MoneyTotals(db);
     totals.calculate();

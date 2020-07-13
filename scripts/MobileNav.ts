@@ -24,12 +24,16 @@ class MobileNav {
 			}
 
 		}, false);
+		document.querySelectorAll("#mainNav [data-opens-screen]").forEach((button:HTMLButtonElement) => {
+
+			button.addEventListener("touchend", () => this.closeFlyout(), false);
+
+		});
 
 	}
 
 	openFlyout(): void {
-
-		this.blackBackground.style.visibility = "visible";
+		
 		this.blackBackground.classList.add("shown");
 		this.blackBackground.addEventListener("touchstart", this.closeFlyout.bind(this), false);
 		this.navSlideout.removeAttribute("aria-hidden");
@@ -40,7 +44,6 @@ class MobileNav {
 
 		this.blackBackground.removeEventListener("touchstart", this.closeFlyout);
 		this.blackBackground.classList.remove("shown");
-		this.blackBackground.addEventListener("transitionend", AppScreen.changeBackToHidden, false);
 		this.navSlideout.setAttribute("aria-hidden", "true");
 
 	}

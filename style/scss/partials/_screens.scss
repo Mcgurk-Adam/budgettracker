@@ -5,6 +5,7 @@
 	width: 100vw;
 	position: fixed;
 	transition: transform $transition_speed;
+	opacity: 1;
 
 	&.from-bottom {
 		bottom: 0px;
@@ -25,7 +26,8 @@
 	}
 
 	&.full {
-		height: 100vh;
+		height: calc(100vh - 50px);
+		top: 50px;
 	}
 
 	&.white {
@@ -48,8 +50,9 @@
 	&.no-animation {
 
 		&[aria-hidden] {
-			
-			display: none;
+
+			visibility: hidden;
+			opacity: 0;
 
 		}
 
@@ -151,6 +154,7 @@ header {
 
 	&.shown {
 		opacity: 1;
+		visibility: visible;
 	}
 
 }

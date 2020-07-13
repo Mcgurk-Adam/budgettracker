@@ -3,6 +3,7 @@ class AppScreen {
 	screenId:string;
 	screenElement:HTMLElement;
 	blackBackground:HTMLDivElement;
+	pageTitle:string|null;
 
 	constructor(pageId:string) {
 
@@ -13,6 +14,8 @@ class AppScreen {
 		if (this.screenElement == null) {
 			throw "Sorry, there is not an element on this page with that ID, therefore, the screen doesn't exist";
 		}
+
+		this.pageTitle = this.screenElement.getAttribute("data-screen-title") == undefined ? null : this.screenElement.getAttribute("data-screen-title");
 
 	}
 
@@ -47,8 +50,10 @@ class AppScreen {
 
 	closeScreen(): void {
 		this.screenElement.setAttribute("aria-hidden", "true");
+		if (this.screenElement.classList.contains("half")) {
+			document.getElementById("dashScreen").removeAttribute("aria-hidden");
+		}
 		this.blackBackground.classList.remove("shown");
-		this.blackBackground.addEventListener("transitionend", AppScreen.changeBackToHidden, false);
 		this.blackBackground.removeEventListener("touchstart", this.clickedOnBackground);
 		this.screenElement.querySelectorAll("input:not([type=radio]):not([type=checkbox]), select").forEach((input:HTMLInputElement|HTMLSelectElement) => {
 
@@ -64,10 +69,24 @@ class AppScreen {
 	}
 
 	openScreen(): void {
-		this.blackBackground.style.visibility = "visible";
-		this.blackBackground.classList.add("shown");
+
+		if (this.screenElement.classList.contains("half")) {
+
+			this.blackBackground.classList.add("shown");
+
+		} else {
+			document.querySelectorAll(".screen").forEach((screen:HTMLElement) => screen.setAttribute("aria-hidden", "true"));
+		}
+
+		if (this.pageTitle != null) {
+			// @ts-ignore
+			document.querySelector("#mainHeader h1").innerText = this.pageTitle;
+
+		}
+
 		this.screenElement.removeAttribute("aria-hidden");
 		this.blackBackground.addEventListener("touchstart", this.clickedOnBackground.bind(this), false);
+
 	}
 
 	clickedOnBackground(ev:MouseEvent): void {
@@ -75,13 +94,6 @@ class AppScreen {
 		if (ev.target == this.blackBackground) {
 			this.closeScreen();
 		}
-
-	}
-
-	static changeBackToHidden(): void {
-
-		this.style.visibility = "hidden";
-		this.removeEventListener("transitionend", AppScreen.changeBackToHidden);
 
 	}
 
