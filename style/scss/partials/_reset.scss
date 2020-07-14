@@ -46,3 +46,10 @@ img {
 	background-repeat: no-repeat;
 	background-position: center;
 }
+
+.dollar::before {
+	content: "$";
+	font-weight: inherit;
+	color: inherit;
+	font-size: inherit;
+}

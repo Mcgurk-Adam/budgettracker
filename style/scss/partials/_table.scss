@@ -29,6 +29,7 @@ thead {
 tbody tr {
 
 	height: 50px;
+	align-items: center;
 
 	&.four {
 
@@ -45,16 +46,17 @@ tfoot td {
 }
 
 td {
-	display: flex;
+	display: inline-block;
 	align-items: center;
 	font-size: 14px;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	padding: 5px;
+	height: fit-content;
 
 	&.bold {
-		font-weight: 500;
+		font-weight: 600;
 	}
 
 }
