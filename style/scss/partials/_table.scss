@@ -9,6 +9,8 @@ table, tbody {
 
 thead {
 
+	border-bottom: 1px solid #D9E2EC;
+
 	&.four {
 
 		th {
@@ -29,6 +31,11 @@ thead {
 
 	}
 
+}
+
+tbody {
+	display: block;
+	overflow-y: scroll;
 }
 
 tbody tr {
@@ -66,7 +73,18 @@ td {
 
 }
 
+tfoot {
+	border-top: 1px solid #D9E2EC;
+	height: 50px;
+
+	tr {
+		align-items: center;
+	}
+
+}
+
 #activityLogTable {
 	padding: 20px;
 	height: 100%;
+	position: absolute;
 }
