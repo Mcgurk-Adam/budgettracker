@@ -137,6 +137,12 @@ header {
 	background-repeat: no-repeat;
 	background-size: 20px auto;
 	background-position: center;
+	transition: $transition_speed all;
+
+	&:active {
+		opacity: .7;
+	}
+
 }
 
 #opaqueBlackBackground {

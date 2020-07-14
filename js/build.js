@@ -113,6 +113,16 @@ var MoneyTotals = (function () {
             document.getElementById("mainMoneyShow").innerText = total.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         });
     };
+    MoneyTotals.prototype.getHistory = function () {
+        Database.fetchAllRowsFromTable(this.db, "transactions", function (idbRequest) {
+            var currentDate = new Date();
+            idbRequest.result.forEach(function (transaction) {
+                if (currentDate.getFullYear() == transaction.date.getFullYear() && currentDate.getMonth() == transaction.date.getMonth()) {
+                    console.log(transaction);
+                }
+            });
+        });
+    };
     return MoneyTotals;
 }());
 var AppScreen = (function () {
@@ -263,6 +273,7 @@ homeScreen.init();
 var db = new Database(function (db) {
     var totals = new MoneyTotals(db);
     totals.calculate();
+    totals.getHistory();
     var newEntry = new AddNewEntry(db, addScreen);
     newEntry.init(totals);
 });
