@@ -19,9 +19,14 @@ thead {
 
 	th {
 		font-size: 12px;
-		color: #627D98;
+		color: #829AB1;
 		display: flex;
 		padding: 5px;
+
+		&.sorting {
+			color: #102A43;
+		}
+
 	}
 
 }

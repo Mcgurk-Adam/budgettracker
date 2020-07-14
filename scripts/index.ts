@@ -1,3 +1,4 @@
+/// <reference path="Table.ts" />
 /// <reference path="Database.ts" />
 /// <reference path="MoneyTotals.ts" />
 /// <reference path="Screen.ts" />
@@ -17,6 +18,9 @@ logScreen.init();
 
 const homeScreen:AppScreen = new AppScreen("dashScreen");
 homeScreen.init();
+
+const logTable:Table = new Table("#activityLogTable");
+logTable.initSort();
 
 const db:Database = new Database((db:IDBDatabase) => {
 
