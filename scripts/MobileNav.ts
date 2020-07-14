@@ -41,7 +41,7 @@ class MobileNav {
 	}
 
 	closeFlyout(): void {
-
+		
 		this.blackBackground.removeEventListener("touchstart", this.closeFlyout);
 		this.blackBackground.classList.remove("shown");
 		this.navSlideout.setAttribute("aria-hidden", "true");
