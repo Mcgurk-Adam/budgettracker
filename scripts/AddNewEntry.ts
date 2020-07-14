@@ -59,6 +59,7 @@ class AddNewEntry {
 		}, (idbRequest:IDBRequest) => {
 			const createdId:number = idbRequest.result;
 			totalCalc.calculate();
+			totalCalc.getHistory();
 			this.addScreen.closeScreen();
 		})
 
