@@ -114,13 +114,26 @@ var MoneyTotals = (function () {
         });
     };
     MoneyTotals.prototype.getHistory = function () {
+        var totalAmount = 0;
         Database.fetchAllRowsFromTable(this.db, "transactions", function (idbRequest) {
             var currentDate = new Date();
             idbRequest.result.forEach(function (transaction) {
                 if (currentDate.getFullYear() == transaction.date.getFullYear() && currentDate.getMonth() == transaction.date.getMonth()) {
-                    console.log(transaction);
+                    totalAmount += transaction.amount;
+                    transaction.amount = transaction.amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                    transaction.date = months[transaction.date.getMonth()] + "-" + transaction.date.getDate();
+                    var logRow_1 = document.getElementById("logRow").content.cloneNode(true);
+                    Object.entries(transaction).forEach(function (key) {
+                        var cellToUpdate = logRow_1.querySelector("[data-" + key[0] + "]");
+                        if (cellToUpdate != null) {
+                            cellToUpdate.innerText = key[1];
+                        }
+                    });
+                    document.querySelector("#activityLogTable tbody").appendChild(logRow_1);
                 }
             });
+            document.getElementById("logTotal").innerText = totalAmount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         });
     };
     return MoneyTotals;

@@ -68,9 +68,31 @@
 
 				<tbody></tbody>
 
+				<tfoot>
+					<tr>
+						<td class="bold">Total:</td>
+						<td></td>
+						<td></td>
+						<td id="logTotal">72.43</td>
+					</tr>
+				</tfoot>
+
 			</table>
 
 		</section>
+
+		<template id="logRow">
+			
+			<tr class="four">
+				
+				<td data-date>Date</td>
+				<td data-name>Name</td>
+				<td data-type>Type</td>
+				<td data-amount>12.41</td>
+
+			</tr>
+
+		</template>
 
 		<section class="screen white from-bottom half" id="addNewEntryScreen" aria-hidden>
 			
@@ -89,7 +111,7 @@
 					<option value="" disabled selected>Select the type</option>
 					<option value="Food">Food</option>
 					<option value="Clothes">Clothes</option>
-					<option value="Technology">Technology</option>
+					<option value="Tech">Tech</option>
 					<option value="Games">Games</option>
 					<option value="Entertainment">Entertainment</option>
 
