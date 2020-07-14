@@ -117,6 +117,8 @@ var MoneyTotals = (function () {
         var totalAmount = 0;
         Database.fetchAllRowsFromTable(this.db, "transactions", function (idbRequest) {
             var currentDate = new Date();
+            var tbody = document.querySelector("#activityLogTable tbody");
+            tbody.innerHTML = "";
             idbRequest.result.forEach(function (transaction) {
                 if (currentDate.getFullYear() == transaction.date.getFullYear() && currentDate.getMonth() == transaction.date.getMonth()) {
                     totalAmount += transaction.amount;
@@ -130,7 +132,7 @@ var MoneyTotals = (function () {
                             cellToUpdate.innerText = key[1];
                         }
                     });
-                    document.querySelector("#activityLogTable tbody").appendChild(logRow_1);
+                    tbody.appendChild(logRow_1);
                 }
             });
             document.getElementById("logTotal").innerText = totalAmount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");

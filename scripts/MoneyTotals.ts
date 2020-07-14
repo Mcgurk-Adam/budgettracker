@@ -38,6 +38,8 @@ class MoneyTotals {
 		Database.fetchAllRowsFromTable(this.db, "transactions", (idbRequest:IDBRequest) => {
 
 			const currentDate:Date = new Date();
+			const tbody = document.querySelector("#activityLogTable tbody");
+			tbody.innerHTML = "";
 
 			idbRequest.result.forEach((transaction:TransactionEntry) => {
 
@@ -61,7 +63,7 @@ class MoneyTotals {
 						}
 					});
 
-					document.querySelector("#activityLogTable tbody").appendChild(logRow);
+					tbody.appendChild(logRow);
 
 				}
 
