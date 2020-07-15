@@ -33,8 +33,8 @@ class Table {
 				    v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
 				    )(this.getCellValue(asc ? a : b, idx), this.getCellValue(asc ? b : a, idx));
 
-				// @ts-ignore - this is an HTMLDivElement even though Typescript disagrees...
-				const sortedData:Array<HTMLDivElement> = Array.from(this.table.querySelectorAll("tbody tr")).sort(comparer(Array.from(heading.parentNode.children).indexOf(heading), sortAsc));
+				// @ts-ignore - from does exist
+				const sortedData:Array<HTMLTableRowElement> = Array.from(this.table.querySelectorAll("tbody tr")).sort(comparer(Array.from(heading.parentNode.children).indexOf(heading), sortAsc));
 				this.rehydrateTable(sortedData);
 
 			}, false);
