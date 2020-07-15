@@ -10,7 +10,8 @@
 	</noscript>
 	<link href="/style/style.css" rel="stylesheet">
 	<link rel="icon" href="/favicon.ico">
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="A small budget tracking app">
 
 </head>
 
@@ -20,17 +21,17 @@
 
 	<main>
 
-		<nav id="mainNav" aria-hidden>
+		<nav id="mainNav" aria-hidden="true">
 
 			<ul>
-				<button type="button" data-opens-screen="dashScreen">Home</button>
-				<button type="button" data-opens-screen="logScreen">Activity</button>
+				<button type="button" data-opens-screen="dashScreen" title="Home Navigation Button" name="Home Navigation Button">Home</button>
+				<button type="button" data-opens-screen="logScreen" title="Activity Navigation Button" name="Activity Navigation Button">Activity</button>
 			</ul>
 
 		</nav>
 
 		<header id="mainHeader">
-			<button id="navSwitcher"></button>
+			<button id="navSwitcher" title="Switch Navigation" name="Switch Navigation"></button>
 			<h1>Home</h1>
 			<div class="clearfix"></div>
 		</header>
@@ -44,7 +45,7 @@
 
 			</div>
 			
-			<button type="button" class="add circle green pressed-animation" id="addNewEntry" data-opens-screen="addNewEntryScreen"></button>
+			<button type="button" class="add circle green pressed-animation" id="addNewEntry" data-opens-screen="addNewEntryScreen" title="Add New Budget Entry" name="Add New Budget Entry"></button>
 
 		</section>
 
@@ -93,11 +94,11 @@
 
 		</template>
 
-		<section class="screen white from-bottom half" id="addNewEntryScreen" aria-hidden>
+		<section class="screen white from-bottom half" id="addNewEntryScreen" aria-hidden="true">
 			
 			<header>
 				
-				<button class="pressed-animation" data-close></button>
+				<button class="pressed-animation" name="Close the entry screen" title="Close the entry screen" data-close></button>
 				<h1>Add an Entry</h1>
 				<div class="clearfix"></div>
 
