@@ -329,7 +329,7 @@ var MobileNav = (function () {
 document.querySelector("body").addEventListener("touchstart", function () { }, { passive: true });
 var nav = new MobileNav();
 nav.addListeners();
-var addScreen = new AppScreen("addNewEntryScreen");
+var addScreen = new AppScreen("addNewEntryScreen", true);
 addScreen.init();
 var logScreen = new AppScreen("logScreen");
 logScreen.init();

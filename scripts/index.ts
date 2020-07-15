@@ -10,7 +10,7 @@ document.querySelector("body").addEventListener("touchstart", () => {}, {passive
 const nav:MobileNav = new MobileNav();
 nav.addListeners();
 
-const addScreen:AppScreen = new AppScreen("addNewEntryScreen");
+const addScreen:AppScreen = new AppScreen("addNewEntryScreen", true);
 addScreen.init();
 
 const logScreen:AppScreen = new AppScreen("logScreen");
