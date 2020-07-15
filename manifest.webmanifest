@@ -1,0 +1,22 @@
+{
+  "short_name": "Money",
+  "name": "Track my money",
+  "description": "Tracks a small slice of my budget",
+  "icons": [
+    {
+      "src": "/assets/pwa/512icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/assets/pwa/1024icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/?utm_source=pwa",
+  "background_color": "#F0F4F8",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#38BEC9"
+}
