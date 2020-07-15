@@ -121,7 +121,7 @@ var Table = (function () {
                 })(_this.getCellValue(asc ? a : b, idx), _this.getCellValue(asc ? b : a, idx)); }; };
                 var sortedData = Array.from(_this.table.querySelectorAll("tbody tr")).sort(comparer(Array.from(heading.parentNode.children).indexOf(heading), sortAsc));
                 _this.rehydrateTable(sortedData);
-            }, false);
+            }, { passive: true });
         });
     };
     Table.prototype.getCellValue = function (tr, idx) {
@@ -203,14 +203,14 @@ var AppScreen = (function () {
         var _this = this;
         var closeButtons = this.screenElement.querySelectorAll("[data-close]");
         closeButtons.forEach(function (button) {
-            button.addEventListener("touchstart", function () { return _this.closeScreen(); }, false);
+            button.addEventListener("touchstart", function () { return _this.closeScreen(); }, { passive: true });
         });
     };
     AppScreen.prototype.attachOpenListeners = function () {
         var _this = this;
         var openButtons = document.querySelectorAll("[data-opens-screen=\"" + this.screenId + "\"]");
         openButtons.forEach(function (button) {
-            button.addEventListener("touchstart", function () { return _this.openScreen(); }, false);
+            button.addEventListener("touchstart", function () { return _this.openScreen(); }, { passive: true });
         });
     };
     AppScreen.prototype.closeScreen = function () {
@@ -244,7 +244,7 @@ var AppScreen = (function () {
         }
         this.screenElement.removeAttribute("aria-hidden");
         if (this.closeClickedOnBackground) {
-            this.blackBackground.addEventListener("touchstart", this.clickedOnBackground.bind(this), false);
+            this.blackBackground.addEventListener("touchstart", this.clickedOnBackground.bind(this), { passive: true });
         }
     };
     AppScreen.prototype.clickedOnBackground = function (ev) {
@@ -304,12 +304,12 @@ var MobileNav = (function () {
     }
     MobileNav.prototype.addListeners = function () {
         var _this = this;
-        this.hamburgerMenu.addEventListener("touchstart", function () { return _this.openFlyout(); }, false);
+        this.hamburgerMenu.addEventListener("touchstart", function () { return _this.openFlyout(); }, { passive: true });
         this.navSlideout.addEventListener("touchstart", function (ev) {
             if (ev.target == _this.navSlideout) {
                 _this.closeFlyout();
             }
-        }, false);
+        }, { passive: true });
         document.querySelectorAll("#mainNav [data-opens-screen]").forEach(function (button) {
             button.addEventListener("touchend", function () { return _this.closeFlyout(); }, false);
         });

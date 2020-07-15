@@ -37,7 +37,7 @@ class Table {
 				const sortedData:Array<HTMLTableRowElement> = Array.from(this.table.querySelectorAll("tbody tr")).sort(comparer(Array.from(heading.parentNode.children).indexOf(heading), sortAsc));
 				this.rehydrateTable(sortedData);
 
-			}, false);
+			}, {passive: true});
 
 		});
 

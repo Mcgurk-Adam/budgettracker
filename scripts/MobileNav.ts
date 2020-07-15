@@ -14,7 +14,7 @@ class MobileNav {
 
 	addListeners(): void {
 
-		this.hamburgerMenu.addEventListener("touchstart", () => this.openFlyout(), false);
+		this.hamburgerMenu.addEventListener("touchstart", () => this.openFlyout(), {passive: true});
 		this.navSlideout.addEventListener("touchstart", (ev:MouseEvent) => {
 
 			if (ev.target == this.navSlideout) {
@@ -23,7 +23,7 @@ class MobileNav {
 
 			}
 
-		}, false);
+		}, {passive: true});
 		document.querySelectorAll("#mainNav [data-opens-screen]").forEach((button:HTMLButtonElement) => {
 
 			button.addEventListener("touchend", () => this.closeFlyout(), false);

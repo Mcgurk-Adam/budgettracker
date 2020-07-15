@@ -33,7 +33,7 @@ class AppScreen {
 		const closeButtons:NodeListOf<HTMLElement> = this.screenElement.querySelectorAll("[data-close]");
 		closeButtons.forEach((button:HTMLElement) => {
 
-			button.addEventListener("touchstart", () => this.closeScreen(), false);
+			button.addEventListener("touchstart", () => this.closeScreen(), {passive: true});
 
 		});
 
@@ -44,7 +44,7 @@ class AppScreen {
 		const openButtons:NodeListOf<HTMLElement> = document.querySelectorAll(`[data-opens-screen="${this.screenId}"]`);
 		openButtons.forEach((button:HTMLElement) => {
 
-			button.addEventListener("touchstart", () => this.openScreen(), false);
+			button.addEventListener("touchstart", () => this.openScreen(), {passive: true});
 
 		});
 
@@ -92,7 +92,7 @@ class AppScreen {
 
 		this.screenElement.removeAttribute("aria-hidden");
 		if (this.closeClickedOnBackground) {
-			this.blackBackground.addEventListener("touchstart", this.clickedOnBackground.bind(this), false);
+			this.blackBackground.addEventListener("touchstart", this.clickedOnBackground.bind(this), {passive: true});
 		}
 
 	}
