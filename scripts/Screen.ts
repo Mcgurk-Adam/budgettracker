@@ -4,8 +4,9 @@ class AppScreen {
 	screenElement:HTMLElement;
 	blackBackground:HTMLDivElement;
 	pageTitle:string|null;
+	closeClickedOnBackground:boolean
 
-	constructor(pageId:string) {
+	constructor(pageId:string, closeClickOnBackground:boolean = false) {
 
 		this.blackBackground = document.getElementById("opaqueBlackBackground") as HTMLDivElement;
 		this.screenId = pageId;
@@ -16,6 +17,7 @@ class AppScreen {
 		}
 
 		this.pageTitle = this.screenElement.getAttribute("data-screen-title") == undefined ? null : this.screenElement.getAttribute("data-screen-title");
+		this.closeClickedOnBackground = closeClickOnBackground;
 
 	}
 
@@ -54,7 +56,9 @@ class AppScreen {
 			document.getElementById("dashScreen").removeAttribute("aria-hidden");
 		}
 		this.blackBackground.classList.remove("shown");
-		this.blackBackground.removeEventListener("touchstart", this.clickedOnBackground);
+		if (this.closeClickedOnBackground) {
+			this.blackBackground.removeEventListener("touchstart", this.clickedOnBackground);
+		}
 		this.screenElement.querySelectorAll("input:not([type=radio]):not([type=checkbox]), select").forEach((input:HTMLInputElement|HTMLSelectElement) => {
 
 			input.blur();
@@ -87,7 +91,9 @@ class AppScreen {
 		}
 
 		this.screenElement.removeAttribute("aria-hidden");
-		this.blackBackground.addEventListener("touchstart", this.clickedOnBackground.bind(this), false);
+		if (this.closeClickedOnBackground) {
+			this.blackBackground.addEventListener("touchstart", this.clickedOnBackground.bind(this), false);
+		}
 
 	}
 
