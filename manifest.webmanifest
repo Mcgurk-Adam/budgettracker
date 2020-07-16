@@ -1,6 +1,6 @@
 {
-  "short_name": "Money",
-  "name": "Track my money",
+  "short_name": "CountCash",
+  "name": "Count Cash",
   "description": "Tracks a small slice of my budget",
   "icons": [
     {
@@ -11,7 +11,7 @@
     {
       "src": "/assets/pwa/1024icon.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "1024x1024"
     }
   ],
   "start_url": "/?utm_source=pwa",

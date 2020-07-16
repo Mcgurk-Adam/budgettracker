@@ -5,6 +5,20 @@
 /// <reference path="AddNewEntry.ts" />
 /// <reference path="MobileNav.ts" />
 
+/*if ("serviceWorker" in navigator) {
+
+	window.addEventListener("load", () => {
+
+		navigator.serviceWorker.register("/sw.js").then((reg:ServiceWorkerRegistration) => {
+		  console.log("New SW reg", reg.scope);
+		}, function(err) {
+		  console.log("ServiceWorker registration failed: ", err);
+		});
+
+	});
+
+}*/
+
 document.querySelector("body").addEventListener("touchstart", () => {}, {passive: true});
 
 const nav:MobileNav = new MobileNav();
