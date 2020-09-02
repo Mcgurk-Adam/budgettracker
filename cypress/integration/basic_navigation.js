@@ -50,4 +50,14 @@ describe("Basic Navigation Tests", () => {
 
 	});
 
+	it("Closes the side nav by clicking the black background", () => {
+
+		// touching the hamburger
+		cy.get("#navSwitcher").trigger("touchstart");
+		cy.get("#opaqueBlackBackground").trigger("touchstart");
+
+		cy.get("#mainNav").should("not.have.attr", "aria-hidden");
+
+	});
+
 });
