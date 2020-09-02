@@ -59,16 +59,27 @@ describe("Basic Navigation Tests", () => {
 
 	});
 
-	it("Navigates to the home screen", () => {
-
-		cy.get('[data-opens-screen="dashScreen"]').trigger("touchstart");
+	it("Navigates back to the home screen", () => {
 
 		// touching the hamburger
 		cy.get("#navSwitcher").trigger("touchstart");
 
 		cy.get('[data-opens-screen="dashScreen"]').trigger("touchstart");
+		cy.get('[data-opens-screen="dashScreen"]').trigger("touchend");
 		cy.get("#mainNav").should("have.attr", "aria-hidden", "true");
 		cy.get("#dashScreen").should("not.have.attr", "aria-hidden");
+
+	});
+
+	it("Navigates to the Activity Screen", () => {
+
+		// touching the hamburger
+		cy.get("#navSwitcher").trigger("touchstart");
+
+		cy.get('[data-opens-screen="logScreen"]').trigger("touchstart");
+		cy.get('[data-opens-screen="logScreen"]').trigger("touchend");
+		cy.get("#mainNav").should("have.attr", "aria-hidden", "true");
+		cy.get("#logScreen").should("not.have.attr", "aria-hidden");
 
 	});
 
