@@ -11,7 +11,6 @@ describe("Basic Navigation Tests", () => {
 
 		// click the button to pop the entry screen open
 		cy.get("#addNewEntry").trigger("touchstart");
-
 		cy.get("#addNewEntryScreen").should("not.have.attr", "aria-hidden");
 
 	});
@@ -45,7 +44,6 @@ describe("Basic Navigation Tests", () => {
 
 		// touching the hamburger
 		cy.get("#navSwitcher").trigger("touchstart");
-
 		cy.get("#mainNav").should("not.have.attr", "aria-hidden");
 
 	});
@@ -56,7 +54,7 @@ describe("Basic Navigation Tests", () => {
 		cy.get("#navSwitcher").trigger("touchstart");
 		cy.get("#opaqueBlackBackground").trigger("touchstart");
 
-		cy.get("#mainNav").should("not.have.attr", "aria-hidden");
+		cy.get("#mainNav").should("have.attr", "aria-hidden", "true");
 
 	});
 
