@@ -52,9 +52,23 @@ describe("Basic Navigation Tests", () => {
 
 		// touching the hamburger
 		cy.get("#navSwitcher").trigger("touchstart");
-		cy.get("#opaqueBlackBackground").trigger("touchstart");
 
+		// touching the background
+		cy.get("#opaqueBlackBackground").trigger("touchstart");
 		cy.get("#mainNav").should("have.attr", "aria-hidden", "true");
+
+	});
+
+	it("Navigates to the home screen", () => {
+
+		cy.get('[data-opens-screen="dashScreen"]').trigger("touchstart");
+
+		// touching the hamburger
+		cy.get("#navSwitcher").trigger("touchstart");
+
+		cy.get('[data-opens-screen="dashScreen"]').trigger("touchstart");
+		cy.get("#mainNav").should("have.attr", "aria-hidden", "true");
+		cy.get("#dashScreen").should("not.have.attr", "aria-hidden");
 
 	});
 
