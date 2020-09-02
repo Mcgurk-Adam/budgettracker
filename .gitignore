@@ -4,4 +4,6 @@
 *.sublime-project
 *.sublime-workspace
 *.log
+*.mp4
+node_modules/
 !.gitignore
