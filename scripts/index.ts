@@ -46,3 +46,17 @@ const db:Database = new Database((db:IDBDatabase) => {
 	newEntry.init(totals);
 
 });
+
+// one-off reload button
+const reloadButton = document.querySelector("[data-performs-action='reload']");
+reloadButton.addEventListener("touchend", () => {
+
+	// unregistering all sw registrations
+	if (window.navigator && navigator.serviceWorker) {
+		navigator.serviceWorker.getRegistrations()
+		.then((registrations) => registrations.forEach((registration) => registration.unregister()));
+	}
+
+	document.location.reload(true);
+			
+}, false);

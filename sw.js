@@ -1,6 +1,7 @@
 const cacheName = "cachev1";
 const urls = [
     "/style/style.css",
+    "/style/style.css.map",
     "/js/build.js",
     "/manifest.webmanifest",
     "favicon.ico",
@@ -10,12 +11,15 @@ const urls = [
     "/assets/add.svg",
     "/assets/hamburger.svg",
     "/assets/x.svg",
+    "/assets/nav-image.svg",
+    "/assets/reload-icon.svg",
     "/assets/logo.svg",
     "/assets/logo.png",
     "/assets/pwa/512icon.png",
     "/assets/pwa/1024icon.png",
     "/assets/pwa/190icon.png",
     "/index.html",
+    "/",
 ];
 self.addEventListener("install", (ev) => {
     ev.waitUntil(
@@ -27,7 +31,7 @@ self.addEventListener("install", (ev) => {
 });
 
 self.addEventListener("fetch", (ev) => {
-    event.respondWith(
+    ev.respondWith(
         caches.match(ev.request)
         .then((res) => {
             if (res) {

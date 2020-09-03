@@ -12,6 +12,14 @@
 	}
 
 	ul {
+
+		img {
+			width: 100px;
+			border-radius: 4px;
+			align-self: center;
+			margin-bottom: 20px;
+		}
+
 		display: flex;
 		flex-flow: column nowrap;
 		height: 100%;
@@ -19,7 +27,7 @@
 		background-color: #fff;
 		padding: 20px 0;
 
-		button[data-opens-screen] {
+		button[data-opens-screen], button[data-performs-action] {
 
 			width: 100%;
 			height: 45px;
@@ -47,12 +55,20 @@
 				background-color: #F0F4F8;
 			}
 
+			&[data-performs-action="reload"] {
+				margin-top: auto;
+			}
+
 			&[data-opens-screen="dashScreen"]::before {
 				background-image: url(/assets/home.svg);
 			}
 
 			&[data-opens-screen="logScreen"]::before {
 				background-image: url(/assets/activity.svg);
+			}
+
+			&[data-performs-action="reload"]::before {
+				background-image: url(/assets/reload-icon.svg);
 			}
 
 		}
