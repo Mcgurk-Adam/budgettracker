@@ -5,7 +5,7 @@
 /// <reference path="AddNewEntry.ts" />
 /// <reference path="MobileNav.ts" />
 
-/*if ("serviceWorker" in navigator) {
+if ("serviceWorker" in navigator) {
 
 	window.addEventListener("load", () => {
 
@@ -17,7 +17,7 @@
 
 	});
 
-}*/
+}
 
 document.querySelector("body").addEventListener("touchstart", () => {}, {passive: true});
 

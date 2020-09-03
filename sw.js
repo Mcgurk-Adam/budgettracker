@@ -1,5 +1,7 @@
 const cacheName = "cachev1";
 const urls = [
+    "/style/style.css",
+    "/js/build.js",
     "/manifest.webmanifest",
     "favicon.ico",
     "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap",
