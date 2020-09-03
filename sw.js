@@ -15,6 +15,7 @@ const urls = [
     "/assets/pwa/512icon.png",
     "/assets/pwa/1024icon.png",
     "/assets/pwa/190icon.png",
+    "/index.html",
 ];
 self.addEventListener("install", (ev) => {
     ev.waitUntil(
