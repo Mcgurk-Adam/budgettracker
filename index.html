@@ -60,13 +60,12 @@
 
 			<table id="activityLogTable">
 				
-				<thead class="four">
+				<thead class="three">
 					
 					<tr>
 
 						<th data-no-sort>Date</th>
 						<th>Name</th>
-						<th>Type</th>
 						<th>Amount</th>
 					
 					</tr>
@@ -76,12 +75,13 @@
 				<tbody></tbody>
 
 				<tfoot>
-					<tr>
+
+					<tr class="three">
 						<td class="bold">Total:</td>
-						<td></td>
 						<td></td>
 						<td id="logTotal" class="dollar">72.43</td>
 					</tr>
+
 				</tfoot>
 
 			</table>
@@ -90,11 +90,10 @@
 
 		<template id="logRow">
 			
-			<tr class="four">
+			<tr class="three">
 				
 				<td data-date></td>
 				<td data-name></td>
-				<td data-type></td>
 				<td data-amount class="dollar"></td>
 
 			</tr>

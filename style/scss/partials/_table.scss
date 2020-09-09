@@ -17,6 +17,14 @@ thead {
 
 	border-bottom: 1px solid #D9E2EC;
 
+	&.three {
+
+		th {
+			width: 33.3%;
+		}
+
+	}
+
 	&.four {
 
 		th {
@@ -46,6 +54,14 @@ tbody {
 
 tbody tr {
 
+	&.three {
+
+		td {
+			width: 33.3%;
+		}
+
+	}
+
 	&.four {
 
 		td {
@@ -56,8 +72,20 @@ tbody tr {
 
 }
 
-tfoot td {
-	width: 25%;
+tfoot {
+
+	tr {
+
+		&.three {
+			width: 33.3%;
+		}
+
+		&.four {
+			width: 25%;
+		}
+
+	}
+
 }
 
 td {

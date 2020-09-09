@@ -11,4 +11,10 @@ describe("Testing the add entry screen", () => {
 		cy.get("#addNewEntryButton").should("have.attr", "disabled");
 	});
 
+	it("Is disabled when the form isn't filled out", () => {
+
+		//
+
+	});
+
 });
