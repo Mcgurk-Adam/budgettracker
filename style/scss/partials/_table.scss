@@ -98,14 +98,20 @@ tfoot {
 
 td {
 
-	display: inline-block;
+	display: flex;
+	justify-content: flex-end;
 	align-items: center;
 	font-size: 14px;
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
 	padding: 5px;
 	height: fit-content;
+
+	&:not(.actions) {
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		display: inline-block;
+
+	}
 
 	&.bold {
 		font-weight: 600;
