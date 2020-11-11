@@ -53,6 +53,31 @@ button {
 
 	}
 
+	&.icon {
+
+		width: 30px;
+		height: 30px;
+		cursor: pointer;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-color: transparent;
+		transition: 100ms all;
+
+		&.trash {
+			background-image: url(/assets/trash.svg);
+		}
+
+		&.edit {
+			background-image: url(/assets/edit.svg);
+		}
+
+		&:active {
+			transform: scale(.95);
+			opacity: .8;
+		}
+
+	}
+
 }
 
 button#addNewEntry {

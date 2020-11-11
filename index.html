@@ -4,13 +4,16 @@
 
 	<meta charset="utf-8">
 	<title>Track!</title>
+
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
 	<noscript>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
 	</noscript>
+
 	<link href="/style/style.css" rel="stylesheet">
+
 	<link rel="icon" href="/favicon.ico">
 	<link rel="manifest" href="/manifest.webmanifest">
 	<meta name="theme-color" content="#38BEC9">
@@ -29,18 +32,22 @@
 		<nav id="mainNav" aria-hidden="true">
 
 			<ul>
+
 				<img src="/assets/nav-image.svg" alt="A green circle with a dollar sign and words saying 'Count Cash'" title="Count Cash">
 				<button type="button" data-opens-screen="dashScreen" title="Home Navigation Button" name="Home Navigation Button">Home</button>
 				<button type="button" data-opens-screen="logScreen" title="Activity Navigation Button" name="Activity Navigation Button">Activity</button>
 				<button type="button" data-performs-action="reload" title="Reload App Button" name="Reload App Button">Reload</button>
+			
 			</ul>
 
 		</nav>
 
 		<header id="mainHeader">
+
 			<button id="navSwitcher" title="Switch Navigation" name="Switch Navigation"></button>
 			<h1>Home</h1>
 			<div class="clearfix"></div>
+
 		</header>
 
 		<section class="screen full no-animation" id="dashScreen" data-screen-title="Home">
@@ -60,13 +67,14 @@
 
 			<table id="activityLogTable">
 				
-				<thead class="three">
+				<thead>
 					
 					<tr>
 
-						<th>Name</th>
-						<th data-no-sort>Date</th>
-						<th>Amount</th>
+						<th style="width: 33%;">Name</th>
+						<th data-no-sort style="width: 20%;">Date</th>
+						<th style="width: 20%;">Amount</th>
+						<th style="width: 27%;"></th>
 					
 					</tr>
 
@@ -77,9 +85,8 @@
 				<tfoot>
 
 					<tr class="three">
-						<td class="bold">Total:</td>
-						<td></td>
-						<td id="logTotal" class="dollar">72.43</td>
+						<td class="bold" style="width: 53%;">Total:</td>
+						<td id="logTotal" class="dollar" style="width: 47%;"></td>
 					</tr>
 
 				</tfoot>
@@ -90,11 +97,17 @@
 
 		<template id="logRow">
 			
-			<tr class="three">
+			<tr>
 				
-				<td data-name></td>
-				<td data-date></td>
-				<td data-amount class="dollar"></td>
+				<td style="width: 33%;" data-name></td>
+				<td style="width: 20%;" data-date></td>
+				<td style="width: 20%;" data-amount class="dollar"></td>
+				<td style="width: 27%;">
+					
+					<button type="button" class="icon edit"></button>
+					<button type="button" class="icon trash"></button>
+
+				</td>
 
 			</tr>
 
