@@ -77,11 +77,19 @@ tfoot {
 	tr {
 
 		&.three {
-			width: 33.3%;
+
+			td {
+				width: 33.3%;
+			}
+
 		}
 
 		&.four {
-			width: 25%;
+
+			td {
+				width: 25%;
+			}
+
 		}
 
 	}
@@ -89,6 +97,7 @@ tfoot {
 }
 
 td {
+
 	display: inline-block;
 	align-items: center;
 	font-size: 14px;
@@ -105,9 +114,7 @@ td {
 }
 
 tfoot {
-
 	border-top: 1px solid #D9E2EC;
-
 }
 
 #activityLogTable {
