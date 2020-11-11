@@ -68,9 +68,18 @@ class MoneyTotals {
 					// giving the delete button the events
 					logRow.querySelector(".trash").addEventListener("touchstart", () => {
 
-						console.log(transaction.transactionId);
-
 						const wantToDelete:boolean = window.confirm("Are you sure you want to delete this transaction?");
+
+						if (wantToDelete) {
+
+							Database.deleteFromDatabase(this.db, "transactions", transaction.transactionId, () => {
+
+								this.calculate();
+								this.getHistory();
+
+							});
+
+						}
 
 					}, {passive: true});
 

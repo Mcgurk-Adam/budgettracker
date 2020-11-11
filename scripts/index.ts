@@ -49,7 +49,9 @@ const db:Database = new Database((db:IDBDatabase) => {
 
 // one-off reload button
 const reloadButton = document.querySelector("[data-performs-action='reload']");
-reloadButton.addEventListener("touchend", () => {
+reloadButton.addEventListener("touchend", reloadApp, false);
+
+function reloadApp() {
 
 	// unregistering all sw registrations
 	if (window.navigator && navigator.serviceWorker) {
@@ -58,5 +60,5 @@ reloadButton.addEventListener("touchend", () => {
 	}
 
 	document.location.reload(true);
-			
-}, false);
+
+}
