@@ -6,6 +6,7 @@ class Database {
 	public db:IDBDatabase;
 	protected transaction:IDBTransaction;
 	protected successFunction:Function;
+	private keyPathString:string = "transactionId";
 
 	/**
 	 *
@@ -71,7 +72,7 @@ class Database {
 	private transactionTable(): void {
 
 		let projectTable:IDBObjectStore = this.db.createObjectStore("transactions", {
-			keyPath: "transactionId",
+			keyPath: this.keyPathString,
 			autoIncrement: true
 		});
 		projectTable.createIndex("name", "name");
@@ -85,13 +86,56 @@ class Database {
 		const idbTransaction:IDBTransaction = db.transaction([tableName], "readwrite");
 		const objectStore:IDBObjectStore = idbTransaction.objectStore(tableName);
 		const objectStoreRequest:IDBRequest<IDBValidKey> = objectStore.add(objectToAdd);
-		objectStoreRequest.onsuccess = ev => {
+		objectStoreRequest.onsuccess = (ev:Event) => {
 			successCallback(objectStoreRequest);
 		};
 
 	}
 
+	public static updateRow(db:IDBDatabase, tableName:string, keyIndex:number|string, objectToUpdate:object, successCallback:Function): void {
+
+		// running the database transaction
+		const idbTransaction:IDBTransaction = db.transaction([tableName], "readwrite");
+		const objectStore:IDBObjectStore = idbTransaction.objectStore(tableName);
+		objectStore.openCursor(keyIndex).onsuccess = (ev:Event) => {
+
+			// @ts-ignore it most definitely does
+			const idbCursor:IDBCursor = event.target.result;
+
+			// @ts-ignore
+			const oldObject:object = idbCursor.value;
+
+			if (idbCursor) {
+
+				// @ts-ignore
+				Object.entries(oldObject).forEach((key) => {
+
+					const keyName:string = key[0];
+					const keyValue:string = key[1];
+
+					if (objectToUpdate[keyName] == undefined) {
+						throw "The object passed doesn't have all of the keys necessary. Specifically, it's missing: " + keyName;
+					} else {
+						oldObject[keyName] = objectToUpdate[keyName];
+					}
+
+				});
+
+				const idbRequest:IDBRequest = idbCursor.update(oldObject);
+				idbRequest.onsuccess = (ev:Event) => {
+
+					successCallback(idbRequest);
+
+				};
+
+			}
+
+		};
+
+	}
+
 	public static fetchAllRowsFromTable(db:IDBDatabase, tableName:string, rowFetchedCallback:Function, rowNotFetchedCallback:Function = () => console.log("Error")): void {
+
 		const idbTransaction:IDBTransaction = db.transaction([tableName]);
 		const objectStore:IDBObjectStore = idbTransaction.objectStore(tableName);
 		const idbRequest:IDBRequest = objectStore.getAll();
