@@ -44,6 +44,7 @@ class Table {
 	}
 
 	private getCellValue(tr:HTMLDivElement, idx:number):string|number {
+		
 		const tableData:HTMLElement = tr.children[idx] as HTMLElement;
 
 		let returnValue:string|number;

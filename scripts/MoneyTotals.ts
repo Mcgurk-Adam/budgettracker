@@ -46,15 +46,17 @@ class MoneyTotals {
 				// only tracking the data for the current month
 				if (currentDate.getFullYear() == transaction.date.getFullYear() && currentDate.getMonth() == transaction.date.getMonth()) {
 
+					// @ts-ignore
+					const logRow = document.getElementById("logRow").content.cloneNode(true) as HTMLElement;
+
+					logRow.querySelector("[data-amount]").setAttribute("data-raw-value", transaction.amount.toString());
+
 					totalAmount += transaction.amount;
 					// @ts-ignore I just need it to be a string for this very specific thing
 					transaction.amount = transaction.amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 					const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 					// @ts-ignore I just need it to be a string for this very specific thing
 					transaction.date = months[transaction.date.getMonth()] + "-" + transaction.date.getDate();
-
-					// @ts-ignore
-					const logRow = document.getElementById("logRow").content.cloneNode(true);
 					// @ts-ignore
 					Object.entries(transaction).forEach((key) => {
 						const cellToUpdate:HTMLElement = logRow.querySelector(`[data-${key[0]}]`);
@@ -62,6 +64,15 @@ class MoneyTotals {
 							cellToUpdate.innerText = key[1];
 						}
 					});
+
+					// giving the delete button the events
+					logRow.querySelector(".trash").addEventListener("touchstart", () => {
+
+						console.log(transaction.transactionId);
+
+						const wantToDelete:boolean = window.confirm("Are you sure you want to delete this transaction?");
+
+					}, {passive: true});
 
 					tbody.appendChild(logRow);
 
