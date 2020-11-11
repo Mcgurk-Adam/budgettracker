@@ -113,6 +113,10 @@ class Database {
 					const keyName:string = key[0];
 					const keyValue:string = key[1];
 
+					if (keyName == "transactionId") {
+						return;
+					}
+
 					if (objectToUpdate[keyName] == undefined) {
 						throw "The object passed doesn't have all of the keys necessary. Specifically, it's missing: " + keyName;
 					} else {
