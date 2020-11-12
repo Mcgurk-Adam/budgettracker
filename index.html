@@ -79,13 +79,13 @@
 
 					<label class="top-down">Transaction Name
 
-						<input type="text" id="editTransactionName" required>
+						<input type="text" id="editTransactionName" data-column="name" required>
 
 					</label>
 
 					<label class="top-down">Transaction Type
 
-						<select id="editTransactionType" required>
+						<select id="editTransactionType" data-column="type" required>
 
 							<option value="" disabled selected>Select the type</option>
 							<option value="Food">Food</option>
@@ -101,21 +101,23 @@
 
 					<label class="dollar-input w-95">
 
-						$ <input type="number" id="editTransactionAmount" inputmode="decimal" step=".01" required>
+						$ <input type="number" data-column="amount" id="editTransactionAmount" inputmode="decimal" step=".01" required>
 
 					</label>
 
 					<label class="top-down">Transaction Date/Time
 
-						<input type="datetime-local" id="editTransactionTime" style="min-width: 95%;" required>
+						<input type="datetime-local" data-column="date" id="editTransactionTime" step="any" style="min-width: 95%;" required>
 
 					</label>
+
+					<input type="hidden" id="editTransactionId" required>
 
 				</form>
 
 				<footer>
 
-					<button type="button" class="gray modal-action">Close</button>
+					<button type="button" class="gray modal-action" data-close-modal>Close</button>
 					<button type="button" class="green modal-action" data-save>Save</button>
 
 				</footer>

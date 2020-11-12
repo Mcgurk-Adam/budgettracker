@@ -1,5 +1,5 @@
 interface TransactionEntry {
-	transactionId:number;
+	transactionId?:number;
 	amount:number;
 	date:Date;
 	type:string;

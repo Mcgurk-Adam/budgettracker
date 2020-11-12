@@ -101,10 +101,11 @@ class MoneyTotals {
 							// @ts-ignore
 							document.getElementById("editTransactionAmount").value = transactionRow.amount;
 
-							console.log(transactionRow.date.toISOString());
+							// @ts-ignore
+							document.getElementById("editTransactionId").value = transactionRow.transactionId;
 
 							// @ts-ignore
-							document.getElementById("editTransactionTime").value = transactionRow.date.toISOString();
+							document.getElementById("editTransactionTime").value = transactionRow.date.toISOString().split(".")[0];
 
 						}, () => console.log("Not able to fetch"));
 

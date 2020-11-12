@@ -22,12 +22,13 @@ if ("serviceWorker" in navigator) {
 document.querySelector("body").addEventListener("touchstart", () => {}, {passive: true});
 const modalXButton = document.querySelectorAll("#editLogEntryModal [data-close-modal]");
 const editModal:HTMLElement = document.getElementById("editLogEntryModal");
+const saveEditButton:HTMLButtonElement = document.querySelector("#editLogEntryModal [data-save]");
+const formElements:NodeListOf<HTMLInputElement|HTMLSelectElement> = editModal.querySelectorAll("form input, form select");
 modalXButton.forEach((button:HTMLButtonElement) => {
 
 	button.addEventListener("touchstart", () => {
 
 		editModal.setAttribute("aria-hidden", "true");
-		const formElements:NodeListOf<HTMLInputElement|HTMLSelectElement> = editModal.querySelectorAll("form input, form select");
 		formElements.forEach((ele:HTMLInputElement|HTMLSelectElement) => {
 			ele.value = "";
 		});
@@ -59,6 +60,33 @@ const db:Database = new Database((db:IDBDatabase) => {
 
 	const newEntry:AddNewEntry = new AddNewEntry(db, addScreen);
 	newEntry.init(totals);
+
+	saveEditButton.addEventListener("touchstart", () => {
+
+		const editedObject:TransactionEntry = {
+			amount: 0,
+			date: new Date(),
+			type: "",
+			name: ""
+		};
+
+		formElements.forEach((ele:HTMLInputElement|HTMLSelectElement) => {
+
+			if (ele.getAttribute("data-column") === "date") {
+				editedObject[ele.getAttribute("data-column")] = new Date(ele.value);
+			} else {
+				editedObject[ele.getAttribute("data-column")] = ele.value;
+			}
+			
+		});
+
+		// @ts-ignore I hate that I can't call .value on document.getElementById
+		Database.updateRow(db, "transactions", document.getElementById("editTransactionId").value, editedObject, () => {
+			totals.calculate();
+			totals.getHistory();
+		});
+
+	}, {passive: true});
 
 });
 

@@ -97,10 +97,13 @@ class Database {
 		// running the database transaction
 		const idbTransaction:IDBTransaction = db.transaction([tableName], "readwrite");
 		const objectStore:IDBObjectStore = idbTransaction.objectStore(tableName);
+		console.log(keyIndex);
 		objectStore.openCursor(keyIndex).onsuccess = (ev:Event) => {
 
 			// @ts-ignore it most definitely does
-			const idbCursor:IDBCursor = event.target.result;
+			const idbCursor:IDBCursor = ev.target.result;
+
+			console.log(ev);
 
 			// @ts-ignore
 			const oldObject:object = idbCursor.value;
