@@ -8,11 +8,13 @@
 	opacity: 1;
 
 	&.from-bottom {
+		
 		bottom: 0px;
 		left: 0px;
 		z-index: 35;
 
 		&.half {
+			
 			border-top-left-radius: 20px;
 			border-top-right-radius: 20px;
 			height: 320px;
@@ -35,6 +37,7 @@
 	}
 
 	.main {
+		
 		display: flex;
 		flex-flow: column nowrap;
 		width: 100%;
@@ -61,6 +64,7 @@
 }
 
 .base {
+
 	width: 100vw;
 	padding-top: 150px;
 
@@ -117,7 +121,7 @@ header {
 		background-color: transparent;
 	}
 
-	button[data-close] {
+	button[data-close], button[data-close-modal] {
 		background-image: url(/assets/x.svg);
 		background-position: center;
 		background-size: 20px;
@@ -146,6 +150,7 @@ header {
 }
 
 #opaqueBlackBackground {
+
 	position: fixed;
 	top: 0px;
 	left: 0px;

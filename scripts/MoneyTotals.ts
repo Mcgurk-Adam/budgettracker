@@ -83,6 +83,19 @@ class MoneyTotals {
 
 					}, {passive: true});
 
+					// giving the edit button then events
+					logRow.querySelector(".edit").addEventListener("touchstart", () => {
+
+						Database.fetchRowFromDatabase(this.db, "transactions", transaction.transactionId, (idbRequest) => {
+
+							const transactionRow:object = idbRequest.result;
+							const editModal:HTMLElement = document.getElementById("editLogEntryModal");
+							editModal.removeAttribute("aria-hidden");
+
+						}, () => console.log("Not able to fetch"));
+
+					}, {passive: true});
+
 					tbody.appendChild(logRow);
 
 				}

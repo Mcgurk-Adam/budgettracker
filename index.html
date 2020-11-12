@@ -65,6 +65,63 @@
 
 		<section class="screen full no-animation" id="logScreen" data-screen-title="Activity" aria-hidden>
 
+			<div data-modal aria-hidden id="editLogEntryModal">
+				
+				<header>
+					
+					<div class="clearfix"></div>
+					<h1>Edit</h1>
+					<button type="button" class="pressed-animation" data-close-modal></button>
+					
+				</header>
+
+				<form class="body">
+
+					<label class="top-down">Transaction Name
+
+						<input type="text" id="editTransactionName" required>
+
+					</label>
+
+					<label class="top-down">Transaction Type
+
+						<select id="editTransactionType" required>
+
+							<option value="" disabled selected>Select the type</option>
+							<option value="Food">Food</option>
+							<option value="Clothes">Clothes</option>
+							<option value="Tech">Tech</option>
+							<option value="Games">Games</option>
+							<option value="Entertainment">Entertainment</option>
+							<option value="Other">Other</option>
+
+						</select>
+
+					</label>
+
+					<label class="dollar-input">
+
+						$ <input type="number" inputmode="decimal" step=".01" required>
+
+					</label>
+
+					<label class="top-down">Transaction Date/Time
+
+						<input type="datetime-local" id="editTransactionTime" required>
+
+					</label>
+
+				</form>
+
+				<footer>
+
+					<button type="button" class="gray modal-action">Close</button>
+					<button type="button" class="green modal-action" data-save>Save</button>
+
+				</footer>
+
+			</div>
+
 			<table id="activityLogTable">
 				
 				<thead>

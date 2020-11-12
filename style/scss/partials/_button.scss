@@ -4,6 +4,28 @@ button {
 
 	&.green {
 		background-color: $main_green;
+		color: #fff;
+	}
+
+	&.gray {
+		background-color: #627D98;
+		color: #fff;
+	}
+
+	&.modal-action {
+
+		font-size: 16px;
+		font-weight: 500;
+		padding: 0 10px;
+		height: 35px;
+		border-radius: 4px;
+		transition: 100ms all;
+		opacity: 1;
+
+		&:active {
+			opacity: .8;
+		}
+
 	}
 
 	&.circle {
