@@ -20,6 +20,21 @@ if ("serviceWorker" in navigator) {
 }
 
 document.querySelector("body").addEventListener("touchstart", () => {}, {passive: true});
+const modalXButton = document.querySelectorAll("#editLogEntryModal [data-close-modal]");
+const editModal:HTMLElement = document.getElementById("editLogEntryModal");
+modalXButton.forEach((button:HTMLButtonElement) => {
+
+	button.addEventListener("touchstart", () => {
+
+		editModal.setAttribute("aria-hidden", "true");
+		const formElements:NodeListOf<HTMLInputElement|HTMLSelectElement> = editModal.querySelectorAll("form input, form select");
+		formElements.forEach((ele:HTMLInputElement|HTMLSelectElement) => {
+			ele.value = "";
+		});
+
+	}, {passive: true});
+
+});
 
 const nav:MobileNav = new MobileNav();
 nav.addListeners();

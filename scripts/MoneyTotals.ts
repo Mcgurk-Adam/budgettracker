@@ -88,9 +88,23 @@ class MoneyTotals {
 
 						Database.fetchRowFromDatabase(this.db, "transactions", transaction.transactionId, (idbRequest) => {
 
-							const transactionRow:object = idbRequest.result;
+							const transactionRow:TransactionEntry = idbRequest.result;
 							const editModal:HTMLElement = document.getElementById("editLogEntryModal");
 							editModal.removeAttribute("aria-hidden");
+
+							// @ts-ignore
+							document.getElementById("editTransactionName").value = transactionRow.name;
+
+							// @ts-ignore
+							document.getElementById("editTransactionType").value = transactionRow.type;
+
+							// @ts-ignore
+							document.getElementById("editTransactionAmount").value = transactionRow.amount;
+
+							console.log(transactionRow.date.toISOString());
+
+							// @ts-ignore
+							document.getElementById("editTransactionTime").value = transactionRow.date.toISOString();
 
 						}, () => console.log("Not able to fetch"));
 
