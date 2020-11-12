@@ -5,7 +5,7 @@ label {
 	margin-bottom: 10px;
 
 	&.top-down {
-		
+
 		flex-flow: column nowrap;
 		width: 95%;
 
@@ -34,6 +34,10 @@ label {
 	align-items: center;
 	font-size: 24px;
 	font-weight: 600;
+
+	&.w-95 {
+		width: 95%;
+	}
 
 	input {
 		width: 50%;
