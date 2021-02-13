@@ -53,8 +53,8 @@ class AddNewEntry {
 		const addedValue:number = parseFloat(this.newEntryInput.value);
 		Database.insert(this.db, "transactions", "transactionId", {
 			amount: addedValue,
-			type: this.typeSelection.value,
-			name: this.nameEntryInput.value,
+			type: this.typeSelection.value.trim(),
+			name: this.nameEntryInput.value.trim(),
 			date: new Date()
 		}, (idbRequest:IDBRequest) => {
 			const createdId:number = idbRequest.result;
