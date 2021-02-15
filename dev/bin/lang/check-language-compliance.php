@@ -3,6 +3,8 @@ declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
 echo TerminalOutput::build_string('This is the default string');
+echo TerminalOutput::build_string('This is a green string', 'GREEN');
+echo TerminalOutput::build_string('This is a red string', 'RED');
 /*$file = 'dev/json/language/templates/language-template.json';
 $main_file = 'dev/json/language/language-strings.json';
 
