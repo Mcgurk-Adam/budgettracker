@@ -22,4 +22,12 @@ final class ReadNewLanguageTest extends TestCase {
 		$this->assertEquals(\preg_match($property->getValue(), 'en'), 1);
 	}
 
+	public function testThrowsExceptionOnEmpty(): void {
+
+		// exposing the property
+		$read_input = new ReadNewLanguage();
+		$this->expectException(BashInputException::class);
+		$read_input->validate_input();
+	}
+
 }
