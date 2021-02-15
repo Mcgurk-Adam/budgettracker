@@ -18,6 +18,8 @@ final class ReadNewLanguageTest extends TestCase {
 
 		// we need to assertTrue the inverse of the return, because the expected return could either be false OR 0 . Both are falsy, but phpunit matches exactly false when calling assertFalse()
 		$this->assertTrue(!\preg_match($property->getValue(), 'english'));
+		//this is just a regular match. A "correct" return will return 1 here
+		$this->assertEquals(\preg_match($property->getValue(), 'en'), 1);
 	}
 
 }
