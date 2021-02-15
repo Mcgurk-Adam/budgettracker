@@ -1,3 +1,5 @@
+<?php include_once 'view/html/includes/head.php'; ?>
+
 <body>
 
 	<div id="opaqueBlackBackground"></div>
