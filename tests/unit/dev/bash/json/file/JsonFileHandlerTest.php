@@ -8,4 +8,9 @@ final class JsonFileHandlerTest extends TestCase {
 		$this->assertInstanceOf(JsonFileHandler::class, new JsonFileHandler('dev/json/language/templates/language-template.json'));
 	}
 
+	public function testThrowsExceptionOnInvalidFilePath(): void {
+		$this->expectException(JsonFileException::class);
+		new JsonFileHandler('dev/not/real/language.json');
+	}
+
 }
