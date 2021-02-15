@@ -8,4 +8,12 @@ final class ReadNewLanguageTest extends TestCase {
 		$this->assertInstanceOf(ReadNewLanguage::class, new ReadNewLanguage());
 	}
 
+	public function testRegex(): void {
+		$read_input = new ReadNewLanguage();
+		$reflected_class = new ReflectionClass($read_input);
+		$property = $reflected_class->getProperty('valid_regex');
+		$property->setAccessible(true);
+		var_dump($property);
+	}
+
 }
