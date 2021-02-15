@@ -13,7 +13,7 @@ final class ReadNewLanguageTest extends TestCase {
 		$reflected_class = new ReflectionClass($read_input);
 		$property = $reflected_class->getProperty('valid_regex');
 		$property->setAccessible(true);
-		var_dump($property);
+		var_dump($property->getValue());
 	}
 
 }
