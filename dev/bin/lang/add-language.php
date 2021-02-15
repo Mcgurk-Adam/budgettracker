@@ -8,6 +8,6 @@ try {
 	$new_read->validate_input();
 } catch (BashInputException $ex) {
 	echo $ex->getMessage();
-	exit;
+	exit(1);
 }
 echo 'Answer is: '.$new_read->get_answer();
