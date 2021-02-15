@@ -2,12 +2,7 @@
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-echo "\033[0;97mgoodbye\033[0m";
-echo "\n";
-sleep(2);
-echo "\033[0;32mhello\033[0m";
-echo "\n";
-
+echo TerminalOutput::build_string('This is the default string');
 /*$file = 'dev/json/language/templates/language-template.json';
 $main_file = 'dev/json/language/language-strings.json';
 
