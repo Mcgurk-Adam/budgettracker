@@ -9,7 +9,6 @@ final class ReadNewLanguageTest extends TestCase {
 	}
 
 	public function testRegex(): void {
-
 		// exposing the property
 		$read_input = new ReadNewLanguage();
 		$reflected_class = new ReflectionClass($read_input);
@@ -23,9 +22,18 @@ final class ReadNewLanguageTest extends TestCase {
 	}
 
 	public function testThrowsExceptionOnEmpty(): void {
-
-		// exposing the property
 		$read_input = new ReadNewLanguage();
+		$this->expectException(BashInputException::class);
+		$read_input->validate_input();
+	}
+
+	public function testThrowsExceptionOnInvalidValue(): void {
+		// exposing the method
+		$read_input = new ReadNewLanguage();
+		$reflected_class = new ReflectionClass($read_input);
+		$method = $reflected_class->getMethod('set_answer');
+		$method->setAccessible(true);
+		$method->invokeArgs($read_input, ['english']);
 		$this->expectException(BashInputException::class);
 		$read_input->validate_input();
 	}
