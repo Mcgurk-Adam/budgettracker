@@ -7,4 +7,5 @@
 *.mp4
 node_modules/
 vendor/
+*.html
 !.gitignore
