@@ -43,6 +43,10 @@ final class TerminalOutput {
 		}
 	}
 
+	public static function exitScript(int $exitCode = 0): void {
+		exit($exitCode);
+	}
+
 }
 
 final class TerminalOutputException extends \Exception {}
