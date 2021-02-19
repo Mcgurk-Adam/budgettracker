@@ -5,8 +5,8 @@ final class ReadNewLanguage extends ReadInput {
 
 	private static $valid_regex = '/^[a-z]{2}$/';
 
-	public function __construct() {
-		parent::__construct('What is the two digit language code you would like to add?');
+	public function __construct(string $prompt) {
+		parent::__construct($prompt);
 	}
 
 	public function validate_input(): void {

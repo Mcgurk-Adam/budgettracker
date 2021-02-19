@@ -5,12 +5,12 @@ use PHPUnit\Framework\TestCase;
 final class ReadNewLanguageTest extends TestCase {
 
 	public function testCanInitClass(): void {
-		$this->assertInstanceOf(ReadNewLanguage::class, new ReadNewLanguage());
+		$this->assertInstanceOf(ReadNewLanguage::class, new ReadNewLanguage('This is a test of the language echoing'));
 	}
 
 	public function testRegex(): void {
 		// exposing the property
-		$read_input = new ReadNewLanguage();
+		$read_input = new ReadNewLanguage('This is a test of the language echoing');
 		$reflected_class = new ReflectionClass($read_input);
 		$property = $reflected_class->getProperty('valid_regex');
 		$property->setAccessible(true);
@@ -22,14 +22,14 @@ final class ReadNewLanguageTest extends TestCase {
 	}
 
 	public function testThrowsExceptionOnEmpty(): void {
-		$read_input = new ReadNewLanguage();
+		$read_input = new ReadNewLanguage('This is a test of the language echoing');
 		$this->expectException(BashInputException::class);
 		$read_input->validate_input();
 	}
 
 	public function testThrowsExceptionOnInvalidValue(): void {
 		// exposing the method
-		$read_input = new ReadNewLanguage();
+		$read_input = new ReadNewLanguage('This is a test of the language echoing');
 		$reflected_class = new ReflectionClass($read_input);
 		$method = $reflected_class->getMethod('set_answer');
 		$method->setAccessible(true);
