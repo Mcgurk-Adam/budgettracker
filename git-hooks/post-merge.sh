@@ -6,8 +6,8 @@ do
 	WAS_CHANGED=`git diff HEAD@{1} --stat -- $f | wc -l`
 	if [ $WAS_CHANGED -gt 0 ]
 	then
-		FILE_NAME="$(cut -d'/' -f2 <<<"$f")"
-		FILE_NAME_NO_EXTENSION="$(cut -d'.' -f1 <<<"$FILE_NAME")"
+		F_NAME="$(cut -d'/' -f2 <<<"$f")"
+		FILE_NAME_NO_EXTENSION="$(cut -d'.' -f1 <<<"$F_NAME")"
 		cp -v -f $f .git/hooks/$FILE_NAME_NO_EXTENSION
 		chmod +x .git/hooks/$FILE_NAME_NO_EXTENSION
 	fi
