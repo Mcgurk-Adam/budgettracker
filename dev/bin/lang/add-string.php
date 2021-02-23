@@ -24,6 +24,29 @@ if ($file_extension !== "php") {
 	TerminalOutput::exit_script(1);
 }
 
+$language_string_file = new JsonFileHandler('dev/json/language/templates/language-template.json');
+$data_in_file = $language_string_file->get_decoded_json();
+if (empty($data_in_file[$file_name])) {
+	$data_in_file[$file_name] = array();
+	$language_string_file->write_to_file(json_encode($data_in_file));
+}
+
+// is it an attribute?
+$attribute_or_not = new ReadInput('Is this string in an attribute Y/n? ');
+$attribute_or_not->prompt();
+$attribute_answer = $attribute_or_not->get_answer();
+while (!\preg_match('/^[Yy|Nn]{1}$/', $attribute_answer)) {
+	$new_ask = new ReadInput('Please answer with the character Y/n: is this string in an attribute? ');
+	$new_ask->prompt();
+	$attribute_answer = $new_ask->get_answer();
+}
+
+if (\strtolower($attribute_answer) === 'y') {
+	// it is an attribute
+} else {
+	// it is just the plain text content for an element
+}
+
 // add in the field to the language-template.json
 // update all of the languages in language-strings.php
 // beautify the language-strings.php
