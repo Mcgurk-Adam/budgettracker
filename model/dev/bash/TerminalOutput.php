@@ -43,7 +43,7 @@ final class TerminalOutput {
 		}
 	}
 
-	public static function exitScript(int $exitCode = 0): void {
+	public static function exit_script(int $exitCode = 0): void {
 		exit($exitCode);
 	}
 

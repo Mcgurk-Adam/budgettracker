@@ -8,6 +8,6 @@ try {
 	$new_read->validate_input();
 } catch (BashInputException $ex) {
 	echo TerminalOutput::build_string($ex->getMessage(), 'RED');
-	TerminalOutput::exitScript(1);
+	TerminalOutput::exit_script(1);
 }
 echo TerminalOutput::build_string('Answer is: '.$new_read->get_answer(), 'GREEN');
