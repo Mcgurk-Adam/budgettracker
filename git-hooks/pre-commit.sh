@@ -1,4 +1,5 @@
 #!/bin/sh
+# and now this comment
 composer install
 composer update
 composer install -o
