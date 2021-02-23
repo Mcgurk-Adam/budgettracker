@@ -1,5 +1,5 @@
 #!/bin/sh
-# now we have this comment
+# now we have this comment and its here
 FILES=git-hooks/*.sh
 for f in $FILES
 do
