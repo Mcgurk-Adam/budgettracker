@@ -23,10 +23,10 @@ final class JsonFileHandlerTest extends TestCase {
 		$original_json_data = $json_file->get_decoded_json();
 		$new_json_data = $original_json_data;
 		$new_json_data['not-exists.php'] = array('title' => 'This won\'t exist, so don\'t even worry about it');
+		$json_file->write_to_file(json_encode($new_json_data));
 		var_dump($new_json_data);
 		var_dump($json_file->get_decoded_json());
 		exit;
-		$json_file->write_to_file(json_encode($new_json_data));
 		$this->assertEquals($new_json_data, $json_file->get_decoded_json());
 	}
 
