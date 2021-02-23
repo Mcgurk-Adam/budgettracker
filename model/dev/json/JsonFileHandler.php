@@ -19,7 +19,12 @@ final class JsonFileHandler {
 	}
 
 	public function write_to_file(string $stringified_json): void {
-		\file_put_contents($this->file_path, $stringified_json);
+		$put_result = \file_put_contents($this->file_path, $stringified_json);
+		if ($put_result === false) {
+			throw new Exception('Something went wrong with the attempted file write');
+		} else {
+			$this->file_contents = $stringified_json;
+		}
 	}
 
 }
