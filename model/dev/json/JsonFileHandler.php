@@ -27,6 +27,11 @@ final class JsonFileHandler {
 		}
 	}
 
+	public function beautify_file(): void {
+		$decoded_json = $this->get_decoded_json();
+		$this->write_to_file(json_encode($decoded_json, JSON_PRETTY_PRINT));
+	}
+
 }
 
 final class JsonFileException extends \Exception {}

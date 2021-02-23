@@ -17,12 +17,13 @@ if (empty($file_name) || !\file_exists('view/html/'.$file_name)) {
 	TerminalOutput::exit_script(1);
 }
 
-$file_extension = \strtolower(\explode('.', $file_name)[\count(\explode('.', $file_name)) - 1]);
-
 // is it a PHP file?
+$file_extension = \strtolower(\explode('.', $file_name)[\count(\explode('.', $file_name)) - 1]);
 if ($file_extension !== "php") {
 	echo TerminalOutput::build_string('This file MUST be a PHP file.', 'RED');
 	TerminalOutput::exit_script(1);
 }
-// Get the file name
-// add in the field
+
+// add in the field to the language-template.json
+// update all of the languages in language-strings.php
+// beautify the language-strings.php
