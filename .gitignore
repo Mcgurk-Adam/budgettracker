@@ -8,5 +8,7 @@
 node_modules/
 vendor/
 *.html
+*.js
+*.css
 !.gitignore
 !.github
