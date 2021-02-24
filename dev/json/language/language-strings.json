@@ -1,18 +1,26 @@
 {
     "en": {
         "includes\/head.php": {
-            "title": "",
-            "meta": "",
-            "head.meta": {
+            "head.title": {
+                "innerText": ""
+            },
+            "head.meta[name=description]": {
+                "content": ""
+            },
+            "h1": {
                 "innerText": ""
             }
         }
     },
     "es": {
         "includes\/head.php": {
-            "title": "",
-            "meta": "",
-            "head.meta": {
+            "head.title": {
+                "innerText": ""
+            },
+            "head.meta[name=description]": {
+                "content": ""
+            },
+            "h1": {
                 "innerText": ""
             }
         }
