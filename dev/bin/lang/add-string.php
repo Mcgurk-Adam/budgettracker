@@ -63,4 +63,5 @@ $language_string_file->write_to_file(json_encode($current_data_in_file));
 
 // update all of the languages in language-strings.php
 $all_languages_file = new JsonFileHandler('dev/json/language/templates/language-strings.json');
+$all_languages = $all_languages_file->get_decoded_json();
 // beautify the language-strings.php
