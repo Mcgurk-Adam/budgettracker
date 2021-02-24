@@ -32,6 +32,7 @@ if (empty($data_in_file[$file_name])) {
 }
 
 // what is the element tree
+// disallow spaces here TO DO
 $element_tree = new ReadInput('What is the IN-FILE element descendence? Seperate levels with periods (ie -> "section.h1"): ');
 $element_tree->prompt();
 $element_tree_answer = $element_tree->get_answer();
@@ -71,7 +72,12 @@ foreach ($all_languages as &$language_data) {
 		continue;
 	}
 	foreach ($language_string_file->get_decoded_json() as $file_path => $data) {
-		var_dump($file_path);
+		if (empty($language_data[$file_path])) {
+			$language_data[$file_path] = $data;
+			continue;
+		} else {
+			// it does exist, we're gonna have to go deeper
+		}
 	}
 }
 $all_languages_file->write_to_file(json_encode($all_languages));
