@@ -61,6 +61,6 @@ if (\strtolower($attribute_answer) === 'y') {
 
 $language_string_file->write_to_file(json_encode($current_data_in_file));
 
-// add in the field to the language-template.json
 // update all of the languages in language-strings.php
+$all_languages_file = new JsonFileHandler('dev/json/language/templates/language-strings.json');
 // beautify the language-strings.php
