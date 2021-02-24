@@ -62,6 +62,15 @@ if (\strtolower($attribute_answer) === 'y') {
 $language_string_file->write_to_file(json_encode($current_data_in_file));
 
 // update all of the languages in language-strings.php
-$all_languages_file = new JsonFileHandler('dev/json/language/templates/language-strings.json');
+$all_languages_file = new JsonFileHandler('dev/json/language/language-strings.json');
 $all_languages = $all_languages_file->get_decoded_json();
+foreach ($all_languages as &$language) {
+	// this should never be triggered, but just in case
+	if (empty($language)) {
+		$language = $language_string_file->get_decoded_json();
+		continue;
+	}
+}
+$all_languages_file->write_to_file(json_encode($all_languages));
+$all_languages_file->beautify_file();
 // beautify the language-strings.php
