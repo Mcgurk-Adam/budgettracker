@@ -19,3 +19,4 @@ composer install -o
 # /bin/bash build_assets.sh
 vendor/bin/phpunit tests
 # analysis on languages
+php dev/bin/lang/pre-commit-check-language-compliance.php
