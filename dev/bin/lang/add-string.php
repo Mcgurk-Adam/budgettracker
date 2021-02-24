@@ -31,6 +31,16 @@ if (empty($data_in_file[$file_name])) {
 	$language_string_file->write_to_file(json_encode($data_in_file));
 }
 
+// what is the element tree
+$element_tree = new ReadInput('What is the IN-FILE element descendence? Seperate levels with periods (ie -> "section.h1").');
+$element_tree->prompt();
+$element_tree_answer = $element_tree->get_answer();
+
+$current_data_in_file = $language_string_file->get_decoded_json();
+if (empty($current_data_in_file[$file_name][$element_tree_answer])) {
+	$current_data_in_file[$file_name][$element_tree_answer] = array();
+}
+
 // is it an attribute?
 $attribute_or_not = new ReadInput('Is this string in an attribute Y/n? ');
 $attribute_or_not->prompt();
@@ -42,10 +52,14 @@ while (!\preg_match('/^[Yy|Nn]{1}$/', $attribute_answer)) {
 }
 
 if (\strtolower($attribute_answer) === 'y') {
-	// it is an attribute
+	$attribute_name = new ReadInput('What is the name of the attribute you would like to add? ');
+	$attribute_name->prompt();
+	$current_data_in_file[$file_name][$element_tree_answer][$attribute_name->get_answer()] = '';
 } else {
-	// it is just the plain text content for an element
+	$current_data_in_file[$file_name][$element_tree_answer]['innerText'] = '';
 }
+
+$language_string_file->write_to_file(json_encode($current_data_in_file));
 
 // add in the field to the language-template.json
 // update all of the languages in language-strings.php

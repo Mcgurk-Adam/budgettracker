@@ -19,6 +19,6 @@
 	<meta name="theme-color" content="#38BEC9">
 	<link rel="apple-touch-icon" href="/assets/pwa/190icon.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="A small budget tracking app"> <!-- lang-string -->
+	<meta name="description" content="A small budget tracking app" test-data-var="<?=$page_vars['head.meta']['test-data-var']?>"> <!-- lang-string -->
 
 </head>
