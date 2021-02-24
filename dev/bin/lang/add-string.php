@@ -32,7 +32,7 @@ if (empty($data_in_file[$file_name])) {
 }
 
 // what is the element tree
-$element_tree = new ReadInput('What is the IN-FILE element descendence? Seperate levels with periods (ie -> "section.h1").');
+$element_tree = new ReadInput('What is the IN-FILE element descendence? Seperate levels with periods (ie -> "section.h1"): ');
 $element_tree->prompt();
 $element_tree_answer = $element_tree->get_answer();
 
