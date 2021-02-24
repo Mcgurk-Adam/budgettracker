@@ -1,28 +1,20 @@
 {
     "en": {
         "includes\/head.php": {
-            "head.title": {
-                "innerText": ""
-            },
-            "head.meta[name=description]": {
-                "content": ""
-            },
-            "h1": {
-                "innerText": ""
-            }
+            "head.title": [],
+            "head.meta[name=description]": []
+        },
+        "app.php": {
+            "body.main.nav.ul.img": []
         }
     },
     "es": {
         "includes\/head.php": {
-            "head.title": {
-                "innerText": ""
-            },
-            "head.meta[name=description]": {
-                "content": ""
-            },
-            "h1": {
-                "innerText": ""
-            }
+            "head.title": [],
+            "head.meta[name=description]": []
+        },
+        "app.php": {
+            "body.main.nav.ul.img": []
         }
     }
 }
