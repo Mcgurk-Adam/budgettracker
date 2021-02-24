@@ -83,11 +83,8 @@ foreach ($all_languages as &$language_data) {
 				$language_data[$file_path][$ele] = $attribute_data;
 				continue;
 			}
-			foreach ($attribute_data as $attribute_name => $attribute_value) {
-				$desired_attribute_to_add = (\strtolower($attribute_answer) === 'y' ? $attribute_name->get_answer() : 'innerText');
-				$language_data[$file_path][$ele][$desired_attribute_to_add] = '';
-
-			}
+			$desired_attribute_to_add = (\strtolower($attribute_answer) === 'y' ? $attribute_name->get_answer() : 'innerText');
+			$language_data[$file_path][$ele][$desired_attribute_to_add] = '';
 		}
 	}
 
